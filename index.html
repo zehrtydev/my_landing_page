@@ -210,9 +210,10 @@
   left: 15px;
   top: 0;
   width: 2px;
-  height: 100%;
+  height: var(--line-height);
   background: #a855f7;
   box-shadow: 0 0 10px #a855f7;
+  transition: height 0.4s ease-out;
 }
 
 .timeline-item {
@@ -339,16 +340,37 @@
 <footer>© 2026 Manuel Amado</footer>
 
 <script>
-// SCROLL ANIMATION
+// 🔥 TIMELINE DRAW EFFECT
+const timeline = document.querySelector(".timeline");
+
+// SCROLL ANIMATION + TIMELINE
 const sections = document.querySelectorAll("section");
+
 window.addEventListener("scroll", () => {
+
+  // Animación de secciones
   sections.forEach(sec => {
     const top = sec.getBoundingClientRect().top;
     if(top < window.innerHeight - 100){
       sec.classList.add("show");
     }
   });
+
+  // Animación del timeline
+  if (timeline) {
+    const rect = timeline.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    const progress = Math.min(
+      Math.max((windowHeight - rect.top) / rect.height, 0),
+      1
+    );
+
+    timeline.style.setProperty("--line-height", `${progress * 100}%`);
+  }
+
 });
+
 
 // PARTICLES
 const canvas = document.getElementById("particles");
