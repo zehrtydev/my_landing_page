@@ -366,13 +366,17 @@ Especialista en Soporte TI | Futuro Desarrollador Web
 
 <section id="contacto">
 <h2>Contacto</h2>
+
 <form action="https://formsubmit.co/zehrty.dev@gmail.com" method="POST">
 
-<input type="text" name="name" placeholder="Nombre">
-<input type="email" name="email" placeholder="Correo">
-<textarea name="message" placeholder="Mensaje"></textarea>
+<input type="text" name="name" placeholder="Nombre" required>
+<input type="email" name="email" placeholder="Correo" required>
+<textarea name="message" placeholder="Mensaje" required></textarea>
 
-<button>Enviar</button>
+<!-- CONFIG -->
+<input type="hidden" name="_captcha" value="false">
+
+<button type="submit">Enviar</button>
 
 </form>
 </section>
@@ -449,6 +453,29 @@ function draw(){
 }
 
 draw();
+
+// FORM SUBMIT SIN REDIRECCIÓN
+const form = document.querySelector("form");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = new FormData(form);
+
+  try {
+    await fetch(form.action, {
+      method: "POST",
+      body: data
+    });
+
+    alert("Mensaje enviado correctamente ✅");
+    form.reset();
+
+  } catch (error) {
+    alert("Error al enviar el mensaje ❌");
+  }
+});
+
 </script>
 
 </body>
