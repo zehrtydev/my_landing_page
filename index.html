@@ -8,31 +8,89 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       background-color: #0f172a;
       color: #e2e8f0;
     }
 
     header {
       text-align: center;
-      padding: 100px 20px;
+      padding: 80px 20px;
+    }
+
+    .profile {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #38bdf8;
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       margin-bottom: 10px;
     }
 
     p {
       color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #38bdf8;
+      color: #0f172a;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      background: #0ea5e9;
     }
 
     section {
       max-width: 900px;
       margin: auto;
       padding: 40px 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease forwards;
     }
 
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.4s; }
+    section:nth-child(4) { animation-delay: 0.6s; }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    /* HABILIDADES */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      background: #1e293b;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    /* PROYECTOS */
     .projects {
       display: grid;
       gap: 20px;
@@ -41,22 +99,13 @@
     .card {
       background: #1e293b;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-    }
-
-    a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background: #38bdf8;
-  color: #0f172a;
-  border-radius: 8px;
-  font-weight: bold;
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     footer {
@@ -69,42 +118,46 @@
 
 <body>
 
-<header>
-  <h1>Hola, soy Manuel 👋</h1>
-  <p>Soporte TI | Aprendiendo desarrollo web</p>
-  <br>
-  <a href="https://github.com/zehrtydev" target="_blank">Ver mi GitHub</a>
-</header>
+  <header>
+    <img src="https://via.placeholder.com/120" alt="foto" class="profile">
+    <h1>Hola, soy Manuel 👋</h1>
+    <p>Soporte TI | Aprendiendo desarrollo web</p>
+    <a href="https://github.com/zehrtydev" target="_blank">Ver mi GitHub</a>
+  </header>
 
   <section>
     <h2>Sobre mí</h2>
     <p>
       Soy apasionado por la tecnología, actualmente trabajo en soporte TI y estoy en proceso de convertirme en desarrollador.
-      Me gusta crear soluciones simples a problemas reales.
+      Me gusta crear soluciones simples a problemas reales y mejorar constantemente mis habilidades.
     </p>
   </section>
-<section>
-  <h2>Habilidades</h2>
-  <ul>
-    <li>Soporte técnico</li>
-    <li>HTML básico</li>
-    <li>Git y GitHub</li>
-    <li>Resolución de problemas</li>
-  </ul>
-</section>
+
+  <section>
+    <h2>Habilidades</h2>
+    <div class="skills">
+      <div class="skill">Soporte TI</div>
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">Git</div>
+      <div class="skill">GitHub</div>
+      <div class="skill">Resolución de problemas</div>
+    </div>
+  </section>
+
   <section>
     <h2>Proyectos</h2>
     <div class="projects">
       <div class="card">
-<h3>Portafolio Web Personal</h3>
-<p>
-  Desarrollo de una landing page personal usando HTML y CSS, desplegada con GitHub Pages.
-</p>
+        <h3>Portafolio Web Personal</h3>
+        <p>
+          Desarrollo de una landing page personal usando HTML y CSS, desplegada con GitHub Pages.
+        </p>
       </div>
 
       <div class="card">
         <h3>Proyecto en desarrollo</h3>
-        <p>Próximamente más detalles...</p>
+        <p>Actualmente trabajando en nuevas funcionalidades y proyectos personales.</p>
       </div>
     </div>
   </section>
@@ -112,7 +165,7 @@
   <section>
     <h2>Contacto</h2>
     <p>Email: zehrty.dev@gmail.com</p>
-    <p>GitHub: <a href="https://github.com/zehrtydev" target="_blank">zehrtydev</a></p>
+    <a href="https://github.com/zehrtydev" target="_blank">Mi GitHub</a>
   </section>
 
   <footer>
