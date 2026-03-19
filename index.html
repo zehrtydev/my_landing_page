@@ -256,6 +256,15 @@
   box-shadow: 0 0 15px rgba(168,85,247,0.7);
 }
 
+.timeline-icon {
+  z-index: 2;
+}
+
+.exp {
+  position: relative;
+  z-index: 1;
+}
+
 /* mejora visual */
 .exp ul {
   padding-left: 20px;
@@ -555,6 +564,10 @@ setTimeout(() => {
     alert("Error al enviar el mensaje ❌");
   }
 });
+
+window.onload = () => {
+  window.scrollTo(0, 0);
+};
 
 </script>
 
