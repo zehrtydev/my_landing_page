@@ -481,37 +481,36 @@ window.addEventListener("scroll", () => {
   // Animación del timeline
   if (timeline) {
 
-// 🔥 ACTIVAR SOLO UNA EXPERIENCIA (VERSIÓN CORREGIDA)
+// 🔥 ACTIVAR SOLO UNA EXPERIENCIA (VERSIÓN FINAL ESTABLE)
 const items = document.querySelectorAll(".timeline-item");
+
+let closestItem = null;
+let minDistance = Infinity;
 
 items.forEach(item => {
   const rect = item.getBoundingClientRect();
-  const middleScreen = window.innerHeight / 2;
+  const itemCenter = rect.top + rect.height / 2;
+  const screenCenter = window.innerHeight / 2;
 
-  const isActive = rect.top <= middleScreen && rect.bottom >= middleScreen;
+  const distance = Math.abs(screenCenter - itemCenter);
 
-  if (isActive) {
-    // quitar todos primero
-    items.forEach(i => {
-      i.classList.remove("active");
-      i.querySelector(".exp").classList.remove("active");
-    });
-
-    // activar solo este
-    item.classList.add("active");
-    item.querySelector(".exp").classList.add("active");
+  if (distance < minDistance) {
+    minDistance = distance;
+    closestItem = item;
   }
 });
 
-  items.forEach(item => {
-    item.classList.remove("active");
-    item.querySelector(".exp").classList.remove("active");
-  });
+// limpiar todos
+items.forEach(item => {
+  item.classList.remove("active");
+  item.querySelector(".exp").classList.remove("active");
+});
 
-  if (closest) {
-    closest.classList.add("active");
-    closest.querySelector(".exp").classList.add("active");
-  }
+// activar solo el más cercano
+if (closestItem) {
+  closestItem.classList.add("active");
+  closestItem.querySelector(".exp").classList.add("active");
+}
 
     const rect = timeline.getBoundingClientRect();
     const windowHeight = window.innerHeight;
