@@ -290,6 +290,19 @@
   }
 }
 
+#form-message {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  background: white;
+  color: #0b0b1a;
+  font-weight: bold;
+  text-align: center;
+  display: none;
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+  border-left: 5px solid #a855f7; /* 👈 clave */
+}
+
   </style>
 </head>
 
@@ -451,9 +464,9 @@ window.addEventListener("scroll", () => {
     const windowHeight = window.innerHeight;
 
     const progress = Math.min(
-      Math.max((windowHeight - rect.top) / rect.height, 0),
-      1
-    );
+  Math.max((windowHeight - rect.top) / (rect.height + 200), 0),
+  1
+);
 
     timeline.style.setProperty("--line-height", `${progress * 100}%`);
   }
