@@ -276,6 +276,7 @@
   text-align: center;
   display: none;
   box-shadow: 0 0 20px rgba(255,255,255,0.4);
+  border-left: 5px solid #a855f7;
   animation: fadeIn 0.5s ease;
 }
 
@@ -288,19 +289,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-#form-message {
-  margin-top: 15px;
-  padding: 12px;
-  border-radius: 8px;
-  background: white;
-  color: #0b0b1a;
-  font-weight: bold;
-  text-align: center;
-  display: none;
-  box-shadow: 0 0 20px rgba(255,255,255,0.4);
-  border-left: 5px solid #a855f7; /* 👈 clave */
 }
 
   </style>
@@ -318,7 +306,7 @@ Especialista en Soporte TI | Futuro Desarrollador Web
 </p>
 
   <div class="hero-buttons">
-    <a href="https://github.com/zehrtydev" target="_blank">Ver proyectos</a>
+    <a href="#proyectos">Ver proyectos</a>
     <a href="#contacto" class="secondary">Contáctame</a>
   </div>
 </header>
@@ -390,7 +378,7 @@ Especialista en Soporte TI | Futuro Desarrollador Web
   </div>
 </section>
 
-<section>
+<section id="proyectos">
   <h2>Proyectos</h2>
 
   <div class="projects">
@@ -411,30 +399,12 @@ Especialista en Soporte TI | Futuro Desarrollador Web
 <input type="email" name="email" placeholder="Correo" required>
 <textarea name="message" placeholder="Mensaje" required></textarea>
 
-<!-- CONFIG -->
-<input type="hidden" name="_captcha" value="false">
-
-<button type="submit">Enviar</button>
-
-</form>
-</section>
-
-<section id="contacto">
-<h2>Contacto</h2>
-
-<form action="https://formsubmit.co/zehrty.dev@gmail.com" method="POST">
-
-<input type="text" name="name" placeholder="Nombre" required>
-<input type="email" name="email" placeholder="Correo" required>
-<textarea name="message" placeholder="Mensaje" required></textarea>
-
 <input type="hidden" name="_captcha" value="false">
 
 <button type="submit">Enviar</button>
 
 </form>
 
-<!-- MENSAJE -->
 <div id="form-message">Mensaje enviado correctamente ✅</div>
 
 </section>
@@ -513,7 +483,7 @@ function draw(){
 draw();
 
 // FORM SUBMIT SIN REDIRECCIÓN
-const form = document.querySelector("form");
+const form = document.querySelector("#contacto form");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
