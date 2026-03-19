@@ -131,6 +131,11 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
+.skill:hover {
+  transform: scale(1.05);
+  border-color: #a855f7;
+}
+
     /* EXPERIENCIA */
     .exp {
       background: #1a1a2e;
@@ -270,7 +275,9 @@
 <header>
   <img src="https://via.placeholder.com/120" class="profile">
   <h1>Manuel Amado (Zehrty)</h1>
-  <p class="subtitle">Soporte TI → Construyendo mi camino como desarrollador web</p>
+  <p class="subtitle">
+Especialista en Soporte TI | Futuro Desarrollador Web
+</p>
 
   <div class="hero-buttons">
     <a href="https://github.com/zehrtydev" target="_blank">Ver proyectos</a>
@@ -345,15 +352,21 @@
   </div>
 </section>
 
-<section><h2>Proyectos</h2><div class="card"><p>Portafolio Web</p></div></section>
+<div class="card">
+  <h3>Portafolio Web</h3>
+  <p>Landing page personal desarrollada con HTML, CSS y JavaScript, incluyendo animaciones, efectos visuales y diseño responsive.</p>
+</div>
 
 <section id="contacto">
 <h2>Contacto</h2>
 <form action="https://formsubmit.co/zehrty.dev@gmail.com" method="POST">
-<input type="text" placeholder="Nombre">
-<input type="email" placeholder="Correo">
-<textarea placeholder="Mensaje"></textarea>
+
+<input type="text" name="name" placeholder="Nombre">
+<input type="email" name="email" placeholder="Correo">
+<textarea name="message" placeholder="Mensaje"></textarea>
+
 <button>Enviar</button>
+
 </form>
 </section>
 
