@@ -145,6 +145,19 @@
       border: 1px solid #2a2a40;
     }
 
+/* ESTADO ACTIVO EXPERIENCIA */
+.exp.active {
+  transform: scale(1.05);
+  background: #2a1a4a;
+  border-color: #a855f7;
+  box-shadow: 0 20px 40px rgba(168,85,247,0.4);
+}
+
+.timeline-item.active .timeline-icon {
+  transform: scale(1.2);
+  box-shadow: 0 0 30px rgba(168,85,247,1);
+}
+
     /* PROYECTOS */
     .projects {
       display: grid;
@@ -467,6 +480,33 @@ window.addEventListener("scroll", () => {
 
   // Animación del timeline
   if (timeline) {
+
+  // 🔥 ACTIVAR SOLO UNA EXPERIENCIA
+  const items = document.querySelectorAll(".timeline-item");
+
+  let closest = null;
+  let closestOffset = Infinity;
+
+  items.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    const offset = Math.abs(rect.top - window.innerHeight / 2);
+
+    if (offset < closestOffset) {
+      closestOffset = offset;
+      closest = item;
+    }
+  });
+
+  items.forEach(item => {
+    item.classList.remove("active");
+    item.querySelector(".exp").classList.remove("active");
+  });
+
+  if (closest) {
+    closest.classList.add("active");
+    closest.querySelector(".exp").classList.add("active");
+  }
+
     const rect = timeline.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
