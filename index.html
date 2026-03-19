@@ -1,39 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página de Presentación</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
-        header { background-color: #333; color: white; text-align: center; padding: 50px 0; }
-        section { padding: 20px; margin: 20px; background-color: white; border-radius: 8px; }
-        footer { text-align: center; padding: 10px; background-color: #333; color: white; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manuel Amado</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0f172a;
+      color: #e2e8f0;
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #94a3b8;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .projects {
+      display: grid;
+      gap: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #64748b;
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Bienvenido a Mi Página de Presentación</h1>
-        <p>Una introducción a mi trabajo y proyectos.</p>
-    </header>
-    <section id="about">
-        <h2>Sobre Mí</h2>
-        <p>Soy un desarrollador apasionado por la tecnología. Aquí encontrarás información sobre mis proyectos y habilidades.</p>
-    </section>
-    <section id="projects">
-        <h2>Proyectos</h2>
-        <ul>
-            <li>Proyecto 1: Descripción breve.</li>
-            <li>Proyecto 2: Descripción breve.</li>
-        </ul>
-    </section>
-    <section id="contact">
-        <h2>Contacto</h2>
-        <p>Email: ejemplo@correo.com</p>
-        <p>LinkedIn: <a href="#">Mi Perfil</a></p>
-    </section>
-    <footer>
-        <p>&copy; 2023 Mi Nombre. Todos los derechos reservados.</p>
-    </footer>
+
+  <header>
+    <h1>Manuel Amado</h1>
+    <p>Soporte TI | Futuro desarrollador</p>
+  </header>
+
+  <section>
+    <h2>Sobre mí</h2>
+    <p>
+      Soy apasionado por la tecnología, actualmente trabajo en soporte TI y estoy en proceso de convertirme en desarrollador.
+      Me gusta crear soluciones simples a problemas reales.
+    </p>
+  </section>
+
+  <section>
+    <h2>Proyectos</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Mi primera web</h3>
+        <p>Portafolio personal desplegado en GitHub Pages.</p>
+      </div>
+
+      <div class="card">
+        <h3>Proyecto en desarrollo</h3>
+        <p>Próximamente más detalles...</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contacto</h2>
+    <p>Email: zehrty.dev@gmail.com</p>
+    <p>GitHub: <a href="https://github.com/zehrtydev" target="_blank">zehrtydev</a></p>
+  </section>
+
+  <footer>
+    <p>© 2026 Manuel Amado</p>
+  </footer>
+
 </body>
 </html>
