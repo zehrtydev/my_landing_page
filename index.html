@@ -163,15 +163,19 @@
       border-radius: 50%;
       border: 4px solid var(--accent-main);
       margin-bottom: 25px;
-      box-shadow: 0 10px 30px var(--accent-glow); /* Sombra elegante sutil por defecto */
+      box-shadow: 0 10px 30px var(--accent-glow);
+      /* Sombra elegante sutil por defecto */
       object-fit: cover;
-      object-position: center; /* Centrar perfecto a la cara */
+      object-position: center;
+      /* Centrar perfecto a la cara */
       transition: box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .profile:hover {
-      box-shadow: 0 15px 40px var(--accent-glow-strong); /* Agresivo solo en hover */
-      transform: scale(1.03); /* Efecto pop premium */
+      box-shadow: 0 15px 40px var(--accent-glow-strong);
+      /* Agresivo solo en hover */
+      transform: scale(1.03);
+      /* Efecto pop premium */
     }
 
     h1 {
@@ -193,17 +197,25 @@
       transform: translateY(40px) scale(0.95);
       animation: heroSwoosh 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
-    
+
     @keyframes heroSwoosh {
       to {
         opacity: 1;
         transform: translateY(0) scale(1);
       }
     }
-    
-    .hero-delay-1 { animation-delay: 0.15s; }
-    .hero-delay-2 { animation-delay: 0.3s; }
-    .hero-delay-3 { animation-delay: 0.45s; }
+
+    .hero-delay-1 {
+      animation-delay: 0.15s;
+    }
+
+    .hero-delay-2 {
+      animation-delay: 0.3s;
+    }
+
+    .hero-delay-3 {
+      animation-delay: 0.45s;
+    }
 
     /* Entrada animada (Intersection observer) */
     .fade-up {
@@ -253,7 +265,8 @@
     .btn-main:hover {
       background: var(--accent-hover);
       transform: translateY(-4px);
-      box-shadow: 0 10px 25px var(--accent-glow-strong); /* Animación sólo interactiva */
+      box-shadow: 0 10px 25px var(--accent-glow-strong);
+      /* Animación sólo interactiva */
     }
 
     .btn-secondary {
@@ -473,7 +486,8 @@
       font-size: 1.1rem;
       margin-top: 20px;
       text-align: justify;
-      line-height: 1.8; /* Da más aire entre líneas para una lectura justificada más cómoda */
+      line-height: 1.8;
+      /* Da más aire entre líneas para una lectura justificada más cómoda */
     }
 
     /* ==== SECCIÓN DE PROYECTOS ==== */
@@ -661,6 +675,28 @@
       margin-top: 0;
       padding-top: 0;
     }
+
+        /* ==== ESTILOS PARA LOGOS PERSONALIZADOS EN TIMELINE ==== */
+    .timeline-icon img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    /* En estado inactivo, convertimos el logo a un tono gris monocromático elegante adaptado al tema */
+    [data-theme="dark"] .timeline-item:not(.active) .timeline-icon img {
+      filter: brightness(0) invert(0.6); /* Gris platino para modo oscuro */
+    }
+
+    [data-theme="light"] .timeline-item:not(.active) .timeline-icon img {
+      filter: brightness(0) invert(0.3); /* Gris oscuro para modo claro */
+    }
+
+    /* Al pasar por la línea (fondo morado), convertimos el logo a blanco puro para impacto total */
+    .timeline-item.active .timeline-icon img {
+      filter: brightness(0) invert(1); 
+    }
   </style>
 </head>
 
@@ -732,7 +768,9 @@
       <div class="timeline-progress-line" id="timeline-progress"></div>
 
       <div class="timeline-item fade-up">
-        <div class="timeline-icon"><i class="fas fa-server"></i></div>
+        <div class="timeline-icon">
+          <img src="logo_petrocasinos.png" alt="Petrocasinos">
+        </div>
         <div class="exp">
           <h3>Auxiliar de Sistemas — Petrocasinos S.A</h3>
           <p>Agosto 2024 - Actualidad</p>
@@ -747,7 +785,9 @@
       </div>
 
       <div class="timeline-item fade-up">
-        <div class="timeline-icon"><i class="fas fa-hospital"></i></div>
+        <div class="timeline-icon">
+          <img src="logo_fafos.png" alt="FAFOS">
+        </div>
         <div class="exp">
           <h3>Técnico de Sistemas — FAFOS</h3>
           <p>Marzo 2024 - Agosto 2024</p>
@@ -762,7 +802,9 @@
       </div>
 
       <div class="timeline-item fade-up">
-        <div class="timeline-icon"><i class="fas fa-headset"></i></div>
+        <div class="timeline-icon">
+          <img src="logo_tool.png" alt="TOOL">
+        </div>
         <div class="exp">
           <h3>Técnico de Sistemas — TOOL S.S</h3>
           <p>Abril 2022 - Marzo 2024</p>
@@ -960,14 +1002,14 @@
         // BÚSQUEDA DEL ÍTEM ACTIVO CON ALTA PRECISIÓN FÍSICA Y VISUAL
         for (let i = timelineItems.length - 1; i >= 0; i--) {
           const itemRect = timelineItems[i].getBoundingClientRect();
-          
+
           // La línea de progreso termina exactamente en "centerScreen".
           // El icono tiene top: 15px. Más su propia mitad (20px) = 35px aprox desde el top de la caja
-          const triggerZone = itemRect.top + 35; 
+          const triggerZone = itemRect.top + 35;
 
           if (centerScreen >= triggerZone) {
             timelineItems[i].classList.add("active");
-            break; 
+            break;
           }
         }
       }
