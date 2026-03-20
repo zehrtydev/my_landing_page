@@ -21,16 +21,17 @@
       --text-muted: #475569;
       --border-color: #e2e8f0;
 
-      --accent-main: #6366f1;
-      --accent-hover: #4f46e5;
-      --accent-glow: rgba(99, 102, 241, 0.2);
-      --accent-glow-strong: rgba(99, 102, 241, 0.5);
+      --accent-main: #8b5cf6;
+      /* Morado profundo y vibrante */
+      --accent-hover: #7c3aed;
+      --accent-glow: rgba(139, 92, 246, 0.2);
+      --accent-glow-strong: rgba(139, 92, 246, 0.5);
 
       --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.05);
       --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.08);
       --shadow-inset: inset 0 0 10px rgba(0, 0, 0, 0.03);
 
-      --particle-color: rgba(99, 102, 241, 0.3);
+      --particle-color: rgba(139, 92, 246, 0.3);
       --form-success-bg: #10b981;
       --form-success-text: #ffffff;
 
@@ -863,7 +864,7 @@
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = themeToggle.querySelector('i');
     const root = document.documentElement;
-    let particleColor = "rgba(99, 102, 241, 0.3)";
+    let particleColor = "rgba(139, 92, 246, 0.3)";
 
     function setTheme(theme) {
       root.setAttribute('data-theme', theme);
