@@ -33,8 +33,8 @@
       --shadow-glow: 0 8px 20px rgba(124, 58, 237, 0.15); /* Haloelegante y suave */
       --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.02);
       
-      /* Partículas suavizadas, sin estrés visual */
-      --particle-color: rgba(124, 58, 237, 0.1); 
+      /* Partículas presentes pero limpias */
+      --particle-color: rgba(124, 58, 237, 0.35); 
       
       --form-success-bg: #ecfdf5;
       --form-success-text: #065f46;
@@ -846,7 +846,7 @@
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = themeToggle.querySelector('i');
     const root = document.documentElement;
-    let particleColor = "rgba(124, 58, 237, 0.1)"; 
+    let particleColor = "rgba(124, 58, 237, 0.35)"; 
 
     function setTheme(theme) {
       root.setAttribute('data-theme', theme);
@@ -960,7 +960,7 @@
     resizeCanvas();
 
     let particles = [];
-    for (let i = 0; i < 40; i++) { // Reducido para no distraer en SaaS
+    for (let i = 0; i < 70; i++) { // Devuelto a un valor disfrutable y mágico
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
