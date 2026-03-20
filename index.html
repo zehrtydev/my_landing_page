@@ -39,7 +39,9 @@
       --form-success-bg: #ecfdf5;
       --form-success-text: #065f46;
       
-      --nav-bg: rgba(247, 247, 248, 0.85);
+      /* Navbar dinámica unificada al botón principal */
+      --nav-bg: rgba(124, 58, 237, 0.85); 
+      --nav-text: #ffffff;
     }
 
     [data-theme="dark"] {
@@ -68,7 +70,8 @@
       --form-success-bg: #064e3b;
       --form-success-text: #34d399;
       
-      --nav-bg: rgba(9, 9, 11, 0.85);
+      --nav-bg: rgba(168, 85, 247, 0.85); /* Semitransparente oscuro morado */
+      --nav-text: #ffffff;
     }
 
     * {
@@ -113,18 +116,20 @@
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px);
       z-index: 1000;
-      border-bottom: 1px solid var(--border-color);
-      box-shadow: var(--shadow-sm); /* Sombra ligera para despegarlo del layout */
+      /* Separador elegante para navbar interactiva purpura */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Sombra ligera para despegarlo flotante */
       transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .navbar .logo {
       font-size: 1.5rem;
       font-weight: bold;
-      color: var(--accent-main);
+      color: var(--nav-text); /* Blanco contrastante siempre */
       text-decoration: none;
       letter-spacing: -0.5px;
       transition: color 0.3s ease;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Profundidad elegante en plano */
     }
 
     .nav-links {
@@ -134,17 +139,20 @@
     }
 
     .nav-links li a {
-      color: var(--text-main);
+      color: var(--nav-text);
+      opacity: 0.85; /* Jerarquía visual */
       text-decoration: none;
       font-weight: 500;
       font-size: 0.95rem;
-      transition: color 0.2s ease;
+      transition: color 0.3s ease, opacity 0.3s ease, text-shadow 0.3s ease;
       background: none;
       padding: 5px 10px;
     }
 
     .nav-links li a:hover, .nav-links li a.active-link {
-      color: var(--accent-main);
+      color: #ffffff;
+      opacity: 1;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); /* Glow brillante natural claro sobre oscuro */
     }
 
     @media (max-width: 768px) {
@@ -1029,19 +1037,47 @@
       }
     });
 
-    // ==== EFECTO PARALLAX FADE-OUT HERO ====
+    // ==== EFECTO PARALLAX AVANZADO Y FADE-OUT HERO (Multi-Layer) ====
     const heroSection = document.getElementById('inicio');
+    const heroProfile = document.querySelector('#inicio .profile');
+    const heroTitle = document.querySelector('#inicio h1');
+    const heroSubtitle = document.querySelector('#inicio .subtitle');
+    const heroBtns = document.querySelector('#inicio .hero-buttons');
+    let isTicking = false;
+
     window.addEventListener('scroll', () => {
       if (!heroSection) return;
-      const scrollY = window.scrollY;
       
-      // Control de opacidad y posición de parallax mientras el header es visible
-      if (scrollY <= window.innerHeight) {
-        // La opacidad decrece rápidamente y el hero escapa *hacia arriba* (-Y) del usuario
-        heroSection.style.opacity = 1 - (Math.min(scrollY, 600) / 600);
-        heroSection.style.transform = `translateY(-${scrollY * 0.45}px)`;
-      } else {
-        heroSection.style.opacity = 0;
+      // Control de rendimiento estricto con requestAnimationFrame (evita lags y cálculos pesados en scroll)
+      if (!isTicking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          
+          if (scrollY <= window.innerHeight) {
+            // Opacidad general difuminada
+            const fadeVal = 1 - (Math.min(scrollY, 500) / 500);
+
+            // Cada componente viaja hacia arriba a su propia velocidad de parallax
+            if (heroProfile) {
+              heroProfile.style.transform = `translateY(-${scrollY * 0.15}px)`;
+              heroProfile.style.opacity = fadeVal;
+            }
+            if (heroTitle) {
+              heroTitle.style.transform = `translateY(-${scrollY * 0.3}px)`;
+              heroTitle.style.opacity = Math.max(0, fadeVal - 0.1);
+            }
+            if (heroSubtitle) {
+              heroSubtitle.style.transform = `translateY(-${scrollY * 0.45}px)`;
+              heroSubtitle.style.opacity = Math.max(0, fadeVal - 0.2);
+            }
+            if (heroBtns) {
+              heroBtns.style.transform = `translateY(-${scrollY * 0.6}px)`;
+              heroBtns.style.opacity = Math.max(0, fadeVal - 0.3);
+            }
+          }
+          isTicking = false;
+        });
+        isTicking = true;
       }
     });
 
