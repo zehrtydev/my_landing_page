@@ -162,21 +162,15 @@
       border-radius: 50%;
       border: 4px solid var(--accent-main);
       margin-bottom: 25px;
-      box-shadow: 0 0 25px var(--accent-glow-strong);
-      animation: glowPulse 3s infinite;
+      box-shadow: 0 10px 30px var(--accent-glow); /* Sombra elegante sutil por defecto */
       object-fit: cover;
+      object-position: center; /* Centrar perfecto a la cara */
+      transition: box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    @keyframes glowPulse {
-
-      0%,
-      100% {
-        box-shadow: 0 0 20px var(--accent-glow);
-      }
-
-      50% {
-        box-shadow: 0 0 45px var(--accent-glow-strong);
-      }
+    .profile:hover {
+      box-shadow: 0 15px 40px var(--accent-glow-strong); /* Agresivo solo en hover */
+      transform: scale(1.03); /* Efecto pop premium */
     }
 
     h1 {
@@ -191,6 +185,24 @@
       color: var(--text-muted);
       max-width: 600px;
     }
+
+    /* ==== ANIMACIÓN NATIVA DE ENTRADA (HERO WOW FACTOR) ==== */
+    .hero-animate {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      animation: heroSwoosh 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    
+    @keyframes heroSwoosh {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    .hero-delay-1 { animation-delay: 0.15s; }
+    .hero-delay-2 { animation-delay: 0.3s; }
+    .hero-delay-3 { animation-delay: 0.45s; }
 
     /* Entrada animada (Intersection observer) */
     .fade-up {
@@ -228,19 +240,19 @@
       border-radius: 8px;
       font-weight: bold;
       text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
     }
 
     .btn-main {
       background: var(--accent-main);
       color: white;
-      box-shadow: 0 5px 15px var(--accent-glow-strong);
+      /* Sin glow agresivo inicial, se verá mucho más profesional */
     }
 
     .btn-main:hover {
       background: var(--accent-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px var(--accent-glow-strong);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px var(--accent-glow-strong); /* Animación sólo interactiva */
     }
 
     .btn-secondary {
@@ -569,13 +581,14 @@
       font-weight: bold;
       font-size: 1.1rem;
       cursor: pointer;
-      box-shadow: 0 5px 15px var(--accent-glow-strong);
-      transition: transform 0.2s ease, background-color 0.3s ease;
+      /* Sin glow continuo */
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     button[type="submit"]:hover {
       background: var(--accent-hover);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px var(--accent-glow-strong);
     }
 
     footer {
@@ -670,13 +683,13 @@
   <canvas id="particles"></canvas>
 
   <header id="inicio">
-    <img src="foto_hero.jpg" class="profile" alt="Foto de Manuel Amado">
-    <h1 class="fade-up delay-1">Manuel Amado (Zehrty)</h1>
-    <p class="subtitle fade-up delay-2">
+    <img src="foto_hero.jpg" class="profile hero-animate" alt="Foto de Manuel Amado">
+    <h1 class="hero-animate hero-delay-1">Manuel Amado (Zehrty)</h1>
+    <p class="subtitle hero-animate hero-delay-2">
       Especialista en Soporte TI | Futuro Desarrollador Web
     </p>
 
-    <div class="hero-buttons fade-up delay-3">
+    <div class="hero-buttons hero-animate hero-delay-3">
       <a href="#proyectos" class="btn-main">Ver Proyectos</a>
       <a href="#contacto" class="btn-secondary">Contáctame</a>
     </div>
@@ -941,17 +954,17 @@
         // ELIMINAR ESTADOS PREVIAMENTE ACTIVOS
         timelineItems.forEach(item => item.classList.remove("active"));
 
-        // BÚSQUEDA DEL ÍTEM ACTIVO EXACTO (El que cruza la línea del progreso / centro)
-        // En lugar de buscar "el más cercano algorítmicamente", busquemos aquel cuyo margen
-        // vertical sea superado por el scroll. Así la luz del ícono coincide 1:1 con la línea 
-
+        // BÚSQUEDA DEL ÍTEM ACTIVO CON ALTA PRECISIÓN FÍSICA Y VISUAL
         for (let i = timelineItems.length - 1; i >= 0; i--) {
           const itemRect = timelineItems[i].getBoundingClientRect();
-          const triggerZone = itemRect.top + (itemRect.height * 0.2); // El 20% del item
+          
+          // La línea de progreso termina exactamente en "centerScreen".
+          // El icono tiene top: 15px. Más su propia mitad (20px) = 35px aprox desde el top de la caja
+          const triggerZone = itemRect.top + 35; 
 
           if (centerScreen >= triggerZone) {
             timelineItems[i].classList.add("active");
-            break; // Rompemos para activar solo el inmediatamente superior
+            break; 
           }
         }
       }
