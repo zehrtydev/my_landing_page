@@ -153,34 +153,51 @@
     /* ==== BOTÓN FLOTANTE TEMA (FAB) ==== */
     .theme-toggle-btn {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 55px;
-      height: 55px;
+      bottom: 25px;
+      right: 25px;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
       background: var(--card-bg);
-      border: 1px solid var(--border-color);
+      border: none; /* Sin bordes para un verdadero FAB flotante */
       color: var(--text-main);
-      font-size: 1.5rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow-md); /* Sombra física natural */
-      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      /* Sombra difusa permanente (profundidad limpia, no neón) */
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); 
+      transition: background-color 0.3s ease, color 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 1000;
+    }
+
+    /* Ajuste pro-contraste en modo oscuro para floating action buttons */
+    [data-theme="dark"] .theme-toggle-btn {
+      background: var(--card-active); 
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
     }
 
     .theme-toggle-btn i {
       font-size: 1.6rem;
-      color: inherit; /* Hereda exacto el color de contraste predefinido */
+      color: inherit; 
+      /* La animación entra en acción automáticamente cuando inyectamos el ícono en JS */
+      animation: swapIconPop 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes swapIconPop {
+      0% { transform: scale(0.3) rotate(-90deg); opacity: 0; }
+      100% { transform: scale(1) rotate(0); opacity: 1; }
     }
 
     .theme-toggle-btn:hover {
-      transform: scale(1.08) rotate(15deg);
+      /* Flotación física hacia el usuario en hover */
+      transform: scale(1.1) translateY(-4px);
       color: var(--accent-main);
-      border-color: var(--border-color);
       box-shadow: var(--shadow-glow);
+    }
+    
+    [data-theme="dark"] .theme-toggle-btn:hover {
+      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4); /* Extra glow notorio al presionar de noche */
     }
 
     /* ==== FONDO PARTÍCULAS ==== */
