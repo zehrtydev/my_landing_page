@@ -7,8 +7,8 @@
   <title>ZehrtyDEV | Portafolio</title>
   <link rel="icon" type="image/png" href="favicon.png">
 
-  <!-- IMPORTACIÓN DE ICONOS (FONTAWESOME) -->
-  <script src="https://kit.fontawesome.com/4b8b3c3c5f.js" crossorigin="anonymous"></script>
+  <!-- IMPORTACIÓN DE ICONOS (FONTAWESOME CDN ESTABLE) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     /* ==== VARIABLES DE TEMA O SISTEMA DE DISEÑO (SAAS) ==== */
@@ -169,6 +169,11 @@
       box-shadow: var(--shadow-md); /* Sombra física natural */
       transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
       z-index: 1000;
+    }
+
+    .theme-toggle-btn i {
+      font-size: 1.6rem;
+      color: inherit; /* Hereda exacto el color de contraste predefinido */
     }
 
     .theme-toggle-btn:hover {
