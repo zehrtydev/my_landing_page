@@ -710,6 +710,22 @@
       transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     }
 
+    .card-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .card-buttons .btn-main,
+    .card-buttons .btn-secondary {
+      margin: 0;
+      flex: 1;
+      padding: 10px 0;
+      font-size: 0.85rem;
+      text-align: center;
+      border-radius: 8px; /* Redondeo limpio y corporativo */
+    }
+
     .card:hover {
       transform: scale(1.02) translateY(-6px);
       /* Sensación inmersiva de tarjeta física 3D levantada */
@@ -939,6 +955,25 @@
       </div>
 
       <div class="card fade-up delay-1">
+        <div class="card-banner"><i class="fas fa-robot"></i></div>
+        <div class="card-content">
+          <h3>Finbot</h3>
+          <p>Aplicación web interactiva que simula un asistente tipo chat enfocado en experiencias guiadas mediante botones y flujos estructurados.</p>
+          <p>A diferencia de un chatbot tradicional basado solo en texto, Finbot prioriza la usabilidad mediante opciones claras que reducen la fricción del usuario y mejoran la toma de decisiones.</p>
+          <p>Este proyecto fue desarrollado como un MVP funcional para validar la interacción usuario → bot → respuesta, implementando lógica básica de flujo y respuestas dinámicas en un entorno web.</p>
+          <div class="card-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <div class="card-buttons">
+            <a href="#" class="btn-main">Ver proyecto</a>
+            <a href="#" class="btn-secondary">Ver código</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card fade-up delay-2">
         <div class="card-banner"><i class="fas fa-chart-line"></i></div>
         <div class="card-content">
           <h3>Dashboard TI (Pronto)</h3>
