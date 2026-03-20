@@ -110,11 +110,12 @@
       align-items: center;
       padding: 0 5%;
       background: var(--nav-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       z-index: 1000;
       border-bottom: 1px solid var(--border-color);
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+      box-shadow: var(--shadow-sm); /* Sombra ligera para despegarlo del layout */
+      transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .navbar .logo {
@@ -212,14 +213,16 @@
     header {
       text-align: center;
       padding: 160px 20px 120px;
-      /* Solo leve reflejo superior estilo spotlight */
-      background: radial-gradient(circle at top, var(--accent-glow), transparent 70%);
+      /* Degradado descendente que amarra perfecto al scroll */
+      background: linear-gradient(to bottom, var(--accent-glow-strong) 0%, transparent 80%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       transition: background 0.3s ease;
+      margin-bottom: 80px; /* Separación clara hacia la vista About */
+      will-change: transform, opacity; /* Optimización para las animaciones scroll */
     }
 
     .profile {
@@ -333,10 +336,7 @@
     
     section:last-of-type { border-bottom: none; }
 
-    #inicio {
-      margin-top: 0;
-      padding-top: 0;
-    }
+    /* Se removió la sobrecarga impuesta a #inicio para habilitar el centrado vertical correcto */
 
     h2 {
       margin-bottom: 35px;
@@ -1026,6 +1026,22 @@
         form.reset(); 
       } catch (error) {
         alert("Error al enviar ❌");
+      }
+    });
+
+    // ==== EFECTO PARALLAX FADE-OUT HERO ====
+    const heroSection = document.getElementById('inicio');
+    window.addEventListener('scroll', () => {
+      if (!heroSection) return;
+      const scrollY = window.scrollY;
+      
+      // Control de opacidad y posición de parallax mientras el header es visible
+      if (scrollY <= window.innerHeight) {
+        // La opacidad decrece linealmente a la par del salto físico
+        heroSection.style.opacity = 1 - (scrollY / 700);
+        heroSection.style.transform = `translateY(${scrollY * 0.3}px)`;
+      } else {
+        heroSection.style.opacity = 0;
       }
     });
 
