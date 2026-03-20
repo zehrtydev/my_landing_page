@@ -113,12 +113,12 @@
       align-items: center;
       padding: 0 5%;
       background: var(--nav-bg);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       z-index: 1000;
-      /* Separador elegante para navbar interactiva purpura */
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Sombra ligera para despegarlo flotante */
+      /* Separador extremadamente sutil y difuso */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06); /* Sombra hiper ligera flotante */
       transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -1054,25 +1054,26 @@
           const scrollY = window.scrollY;
           
           if (scrollY <= window.innerHeight) {
-            // Opacidad general difuminada
-            const fadeVal = 1 - (Math.min(scrollY, 500) / 500);
+            // Curva de opacidad que empieza a caer progresivamente más rápido (Efecto suave profesional)
+            const ratio = Math.min(scrollY, 600) / 600;
+            const fadeVal = Math.pow(1 - ratio, 1.8);
 
-            // Cada componente viaja hacia arriba a su propia velocidad de parallax
+            // Cada componente viaja hacia arriba a su propia velocidad hipermarcada
             if (heroProfile) {
-              heroProfile.style.transform = `translateY(-${scrollY * 0.15}px)`;
+              heroProfile.style.transform = `translateY(-${scrollY * 0.2}px)`; // Lento
               heroProfile.style.opacity = fadeVal;
             }
             if (heroTitle) {
-              heroTitle.style.transform = `translateY(-${scrollY * 0.3}px)`;
-              heroTitle.style.opacity = Math.max(0, fadeVal - 0.1);
+              heroTitle.style.transform = `translateY(-${scrollY * 0.45}px)`; // Medio
+              heroTitle.style.opacity = fadeVal; 
             }
             if (heroSubtitle) {
-              heroSubtitle.style.transform = `translateY(-${scrollY * 0.45}px)`;
-              heroSubtitle.style.opacity = Math.max(0, fadeVal - 0.2);
+              heroSubtitle.style.transform = `translateY(-${scrollY * 0.65}px)`; // Medio-rápido
+              heroSubtitle.style.opacity = fadeVal;
             }
             if (heroBtns) {
-              heroBtns.style.transform = `translateY(-${scrollY * 0.6}px)`;
-              heroBtns.style.opacity = Math.max(0, fadeVal - 0.3);
+              heroBtns.style.transform = `translateY(-${scrollY * 0.9}px)`; // Rápido
+              heroBtns.style.opacity = fadeVal;
             }
           }
           isTicking = false;
