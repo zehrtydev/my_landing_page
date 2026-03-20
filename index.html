@@ -14,63 +14,81 @@
     /* ==== VARIABLES DE TEMA O SISTEMA DE DISEÑO (SAAS) ==== */
     :root {
       /* TEMA CLARO (LIGHT) - Estética SaaS Limpia (Notion, Linear, Stripe) */
-      --bg-color: #f7f7f8;         /* Gris super claro y calmado, evita fatiga visual (no blanco puro) */
-      --card-bg: #ffffff;          /* Blanco limpio exclusivo para elevar tarjetas */
-      --card-active: #ffffff;      
-      
-      --text-main: #27272a;        /* Gris antracita/oscuro ultra fuerte (no negro) */
-      --text-hd: #18181b;          /* Headings casi negros para contraste exquisito */
-      --text-muted: #71717a;       /* Gris medio sutil para lectura continuada */
-      
-      --border-color: #e4e4e7;     /* Bordes delicados gris plata */
-      
-      --accent-main: #7c3aed;      /* Morado elegante (Vibrant Violet puro) */
-      --accent-hover: #6d28d9;     /* Morado tintado al pasar el mouse */
-      
+      --bg-color: #f7f7f8;
+      /* Gris super claro y calmado, evita fatiga visual (no blanco puro) */
+      --card-bg: #ffffff;
+      /* Blanco limpio exclusivo para elevar tarjetas */
+      --card-active: #ffffff;
+
+      --text-main: #27272a;
+      /* Gris antracita/oscuro ultra fuerte (no negro) */
+      --text-hd: #18181b;
+      /* Headings casi negros para contraste exquisito */
+      --text-muted: #71717a;
+      /* Gris medio sutil para lectura continuada */
+
+      --border-color: #e4e4e7;
+      /* Bordes delicados gris plata */
+
+      --accent-main: #7c3aed;
+      /* Morado elegante (Vibrant Violet puro) */
+      --accent-hover: #6d28d9;
+      /* Morado tintado al pasar el mouse */
+
       /* Sombras difusas SaaS, sin glows de neón en light mode */
       --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
       --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
-      --shadow-glow: 0 8px 20px rgba(124, 58, 237, 0.15); /* Haloelegante y suave */
+      --shadow-glow: 0 8px 20px rgba(124, 58, 237, 0.15);
+      /* Haloelegante y suave */
       --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.02);
-      
+
       /* Partículas presentes pero limpias */
-      --particle-color: rgba(124, 58, 237, 0.35); 
-      
+      --particle-color: rgba(124, 58, 237, 0.35);
+
       --form-success-bg: #ecfdf5;
       --form-success-text: #065f46;
-      
+
       /* Navbar dinámica unificada al botón principal */
-      --nav-bg: rgba(124, 58, 237, 0.85); 
+      --nav-bg: rgba(124, 58, 237, 0.85);
       --nav-text: #ffffff;
     }
 
     [data-theme="dark"] {
       /* TEMA OSCURO (DARK) - Estética Premium Night Mode */
-      --bg-color: #09090b;         /* Zinc 950: oscuridad moderna (no absoluto) */
-      --card-bg: #18181b;          /* Zinc 900 */
-      --card-active: #27272a;      /* Zinc 800 */
-      
-      --text-main: #f4f4f5;        /* Blanco humo para párrafos */
-      --text-hd: #ffffff;          /* Blanco puro para headers */
-      --text-muted: #a1a1aa;       /* Gris asfalto sutil */
-      
-      --border-color: #27272a;     /* Bordes oscuros fundidos */
-      
-      --accent-main: #a855f7;      /* Morado luminoso (manteniendo esencia dark) */
+      --bg-color: #09090b;
+      /* Zinc 950: oscuridad moderna (no absoluto) */
+      --card-bg: #18181b;
+      /* Zinc 900 */
+      --card-active: #27272a;
+      /* Zinc 800 */
+
+      --text-main: #f4f4f5;
+      /* Blanco humo para párrafos */
+      --text-hd: #ffffff;
+      /* Blanco puro para headers */
+      --text-muted: #a1a1aa;
+      /* Gris asfalto sutil */
+
+      --border-color: #27272a;
+      /* Bordes oscuros fundidos */
+
+      --accent-main: #a855f7;
+      /* Morado luminoso (manteniendo esencia dark) */
       --accent-hover: #9333ea;
-      
+
       /* En Night Mode sí se permiten luces/glows más intensos por contraste */
       --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.25);
       --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.4);
-      --shadow-glow: 0 10px 30px rgba(168, 85, 247, 0.25); 
+      --shadow-glow: 0 10px 30px rgba(168, 85, 247, 0.25);
       --shadow-inset: inset 0 2px 5px rgba(0, 0, 0, 0.3);
-      
+
       --particle-color: rgba(168, 85, 247, 0.25);
-      
+
       --form-success-bg: #064e3b;
       --form-success-text: #34d399;
-      
-      --nav-bg: rgba(168, 85, 247, 0.85); /* Semitransparente oscuro morado */
+
+      --nav-bg: rgba(168, 85, 247, 0.85);
+      /* Semitransparente oscuro morado */
       --nav-text: #ffffff;
     }
 
@@ -91,14 +109,18 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    h1, h2, h3, h4 { 
+    h1,
+    h2,
+    h3,
+    h4 {
       color: var(--text-hd);
-      transition: color 0.3s ease; 
+      transition: color 0.3s ease;
     }
-    
-    p, li { 
+
+    p,
+    li {
       color: var(--text-muted);
-      transition: color 0.3s ease; 
+      transition: color 0.3s ease;
     }
 
     /* ==== NAVBAR (GLASSMORPHISM) ==== */
@@ -118,18 +140,21 @@
       z-index: 1000;
       /* Separador extremadamente sutil y difuso */
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06); /* Sombra hiper ligera flotante */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      /* Sombra hiper ligera flotante */
       transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .navbar .logo {
       font-size: 1.5rem;
       font-weight: bold;
-      color: var(--nav-text); /* Blanco contrastante siempre */
+      color: var(--nav-text);
+      /* Blanco contrastante siempre */
       text-decoration: none;
       letter-spacing: -0.5px;
       transition: color 0.3s ease;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Profundidad elegante en plano */
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      /* Profundidad elegante en plano */
     }
 
     .nav-links {
@@ -140,7 +165,8 @@
 
     .nav-links li a {
       color: var(--nav-text);
-      opacity: 0.85; /* Jerarquía visual */
+      opacity: 0.85;
+      /* Jerarquía visual */
       text-decoration: none;
       font-weight: 500;
       font-size: 0.95rem;
@@ -149,14 +175,18 @@
       padding: 5px 10px;
     }
 
-    .nav-links li a:hover, .nav-links li a.active-link {
+    .nav-links li a:hover,
+    .nav-links li a.active-link {
       color: #ffffff;
       opacity: 1;
-      text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); /* Glow brillante natural claro sobre oscuro */
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+      /* Glow brillante natural claro sobre oscuro */
     }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; }
+      .nav-links {
+        display: none;
+      }
     }
 
     /* ==== BOTÓN FLOTANTE TEMA (FAB) ==== */
@@ -168,34 +198,42 @@
       height: 58px;
       border-radius: 50%;
       background: var(--card-bg);
-      border: none; /* Sin bordes para un verdadero FAB flotante */
+      border: none;
+      /* Sin bordes para un verdadero FAB flotante */
       color: var(--text-main);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       /* Sombra difusa permanente (profundidad limpia, no neón) */
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); 
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
       transition: background-color 0.3s ease, color 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 1000;
     }
 
     /* Ajuste pro-contraste en modo oscuro para floating action buttons */
     [data-theme="dark"] .theme-toggle-btn {
-      background: var(--card-active); 
+      background: var(--card-active);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
     }
 
     .theme-toggle-btn i {
       font-size: 1.6rem;
-      color: inherit; 
+      color: inherit;
       /* La animación entra en acción automáticamente cuando inyectamos el ícono en JS */
       animation: swapIconPop 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
 
     @keyframes swapIconPop {
-      0% { transform: scale(0.3) rotate(-90deg); opacity: 0; }
-      100% { transform: scale(1) rotate(0); opacity: 1; }
+      0% {
+        transform: scale(0.3) rotate(-90deg);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+      }
     }
 
     .theme-toggle-btn:hover {
@@ -204,9 +242,10 @@
       color: var(--accent-main);
       box-shadow: var(--shadow-glow);
     }
-    
+
     [data-theme="dark"] .theme-toggle-btn:hover {
-      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4); /* Extra glow notorio al presionar de noche */
+      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+      /* Extra glow notorio al presionar de noche */
     }
 
     /* ==== FONDO PARTÍCULAS ==== */
@@ -229,8 +268,10 @@
       justify-content: center;
       align-items: center;
       transition: background 0.3s ease;
-      margin-bottom: 150px; /* Respiro masivo para separar de la sección About Me */
-      will-change: transform, opacity; /* Optimización para las animaciones scroll */
+      margin-bottom: 150px;
+      /* Respiro masivo para separar de la sección About Me */
+      will-change: transform, opacity;
+      /* Optimización para las animaciones scroll */
     }
 
     .profile {
@@ -240,9 +281,10 @@
       /* Borde limpio sólido */
       border: 3px solid var(--accent-main);
       margin-bottom: 25px;
-      box-shadow: var(--shadow-md); /* Cero neón, sombra difusa SaaS */
+      box-shadow: var(--shadow-md);
+      /* Cero neón, sombra difusa SaaS */
       object-fit: cover;
-      object-position: center; 
+      object-position: center;
       transition: box-shadow 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
@@ -269,8 +311,12 @@
       transform: scale(0.85);
       animation: heroPop 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
+
     @keyframes heroPop {
-      to { opacity: 1; transform: scale(1); }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .hero-text-animate {
@@ -278,33 +324,57 @@
       transform: translateY(40px);
       animation: heroSlideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     }
+
     @keyframes heroSlideUp {
-      to { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    
-    .hero-delay-1 { animation-delay: 0.15s; }
-    .hero-delay-2 { animation-delay: 0.25s; }
-    .hero-delay-3 { animation-delay: 0.35s; }
+
+    .hero-delay-1 {
+      animation-delay: 0.15s;
+    }
+
+    .hero-delay-2 {
+      animation-delay: 0.25s;
+    }
+
+    .hero-delay-3 {
+      animation-delay: 0.35s;
+    }
 
     /* ==== INTERSECTION OBSERVER ANIMATIONS ==== */
     .fade-up {
       opacity: 0;
-      transform: translateY(50px); /* Desplazamiento ampliado para un reveal dramático */
+      transform: translateY(50px);
+      /* Desplazamiento ampliado para un reveal dramático */
       transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
+
     .fade-up.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .delay-1 { transition-delay: 0.15s; }
-    .delay-2 { transition-delay: 0.3s; }
-    .delay-3 { transition-delay: 0.45s; }
+
+    .delay-1 {
+      transition-delay: 0.15s;
+    }
+
+    .delay-2 {
+      transition-delay: 0.3s;
+    }
+
+    .delay-3 {
+      transition-delay: 0.45s;
+    }
 
     .hero-buttons {
       margin-top: 30px;
     }
 
-    .btn-main, .btn-secondary {
+    .btn-main,
+    .btn-secondary {
       display: inline-block;
       margin: 10px;
       padding: 12px 26px;
@@ -317,14 +387,17 @@
 
     .btn-main {
       background: var(--accent-main);
-      color: #ffffff; /* Letra blanca pura intencional */
+      color: #ffffff;
+      /* Letra blanca pura intencional */
       box-shadow: var(--shadow-sm);
     }
 
     .btn-main:hover {
       background: var(--accent-hover);
-      transform: scale(1.03) translateY(-2px); /* Táctil dinámico */
-      box-shadow: var(--shadow-glow); /* Glow exclusivo en acción */
+      transform: scale(1.03) translateY(-2px);
+      /* Táctil dinámico */
+      box-shadow: var(--shadow-glow);
+      /* Glow exclusivo en acción */
       color: #ffffff;
     }
 
@@ -334,7 +407,7 @@
       color: var(--text-main);
       box-shadow: var(--shadow-sm);
     }
-    
+
     .btn-secondary:hover {
       background: var(--card-active);
       border-color: var(--text-muted);
@@ -349,8 +422,10 @@
       border-bottom: 1px solid var(--border-color);
       transition: border-color 0.3s ease;
     }
-    
-    section:last-of-type { border-bottom: none; }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
 
     /* Se removió la sobrecarga impuesta a #inicio para habilitar el centrado vertical correcto */
 
@@ -361,7 +436,7 @@
       position: relative;
       display: inline-block;
     }
-    
+
     /* Pequeño subrayado que acompaña h2 */
     h2::after {
       content: "";
@@ -379,7 +454,7 @@
     .about-text {
       font-size: 1.05rem;
       text-align: justify;
-      line-height: 1.8; 
+      line-height: 1.8;
       margin-top: 10px;
     }
 
@@ -411,9 +486,11 @@
     }
 
     .skill:hover {
-      transform: scale(1.05) translateY(-2px); /* Microinteracción scale para dar vida */
+      transform: scale(1.05) translateY(-2px);
+      /* Microinteracción scale para dar vida */
       border-color: var(--accent-main);
-      box-shadow: var(--shadow-glow); /* Retroalimentación instantánea */
+      box-shadow: var(--shadow-glow);
+      /* Retroalimentación instantánea */
     }
 
     /* ==== LÍNEA DE TIEMPO (TIMELINE LOGIC) ==== */
@@ -425,7 +502,8 @@
 
     .timeline-bg-line {
       position: absolute;
-      left: 14px; /* Centrado visual a los 35px de padding (14 + 1 pixel de línea) */
+      left: 14px;
+      /* Centrado visual a los 35px de padding (14 + 1 pixel de línea) */
       top: 0;
       width: 2px;
       height: 100%;
@@ -439,7 +517,7 @@
       left: 14px;
       top: 0;
       width: 2px;
-      height: 0px; 
+      height: 0px;
       background: var(--accent-main);
       /* Un fulgor super sutil, no rompe esquema SaaS */
       box-shadow: 0 0 6px var(--accent-glow);
@@ -453,14 +531,18 @@
       margin-bottom: 40px;
       z-index: 2;
     }
-    
-    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
 
     .timeline-icon {
       position: absolute;
-      left: -38px; /* Offset exacto contra la línea (14px) en un circle de 36px */
+      left: -38px;
+      /* Offset exacto contra la línea (14px) en un circle de 36px */
       top: 15px;
-      background: var(--card-bg); /* Siempre blanco o contenedor real del tema */
+      background: var(--card-bg);
+      /* Siempre blanco o contenedor real del tema */
       border: 2px solid var(--border-color);
       width: 36px;
       height: 36px;
@@ -475,18 +557,18 @@
 
     /* LÓGICA DE LOGOS ORIGINALES Y THEME CONTRAST (REVOLUCIONARIO) */
     .timeline-icon img {
-      width: 20px; 
+      width: 20px;
       height: 20px;
-      object-fit: contain; 
+      object-fit: contain;
       transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
     }
 
     /* Light Mode Logo Base: Logos originales, levemente atenuados en distracción, sin filtros raros */
     .timeline-icon img {
-      filter: none; 
+      filter: none;
       opacity: 0.6;
     }
-    
+
     /* Dark Mode Logo Base: Forzados a blanco silueta para contraste perfecto sobre su dark */
     [data-theme="dark"] .timeline-icon img {
       filter: brightness(0) invert(1);
@@ -499,7 +581,8 @@
       padding: 24px;
       border-radius: 12px;
       border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-sm); /* Textura fina */
+      box-shadow: var(--shadow-sm);
+      /* Textura fina */
       position: relative;
       transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
     }
@@ -512,22 +595,34 @@
 
     .exp p {
       font-size: 0.85rem;
-      color: var(--text-muted); /* Sin colores raros temporales */
+      color: var(--text-muted);
+      /* Sin colores raros temporales */
       font-weight: 500;
       margin-bottom: 12px;
     }
 
-    .exp ul { padding-left: 20px; margin-top: 10px; }
-    .exp li { margin-bottom: 6px; font-size: 0.95rem; }
+    .exp ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .exp li {
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
 
     /* Al Active */
-    .timeline-item.active { z-index: 10; }
+    .timeline-item.active {
+      z-index: 10;
+    }
 
     .timeline-item.active .exp {
       transform: translateX(5px);
       background: var(--card-active);
-      border-color: var(--border-color); /* Borde sutil, no morado tosco */
-      box-shadow: var(--shadow-glow); /* La sombra crea el aura de atención */
+      border-color: var(--border-color);
+      /* Borde sutil, no morado tosco */
+      box-shadow: var(--shadow-glow);
+      /* La sombra crea el aura de atención */
     }
 
     /* El icono activo gana protagonismo con borde morado */
@@ -543,8 +638,10 @@
       opacity: 1;
       transform: scale(1.05);
     }
+
     [data-theme="dark"] .timeline-item.active .timeline-icon img {
-      filter: brightness(0) invert(1); /* Mantiene su consistencia white */
+      filter: brightness(0) invert(1);
+      /* Mantiene su consistencia white */
       opacity: 1;
     }
 
@@ -560,17 +657,18 @@
       background: var(--card-bg);
       border-radius: 12px;
       border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-sm); 
+      box-shadow: var(--shadow-sm);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
     }
-    
+
     .card-banner {
       width: 100%;
       height: 140px;
-      background: var(--bg-color); /* Separación visual limpia superior */
+      background: var(--bg-color);
+      /* Separación visual limpia superior */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -580,31 +678,44 @@
       transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     }
 
-    .card-content { padding: 20px; }
-    .card-content h3 { font-size: 1.15rem; margin-bottom: 8px; }
-    .card-content p { font-size: 0.95rem; margin-bottom: 15px; }
-    
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
     .card-tags {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
     }
-    
+
     .tag {
       font-size: 0.75rem;
       font-weight: 500;
       padding: 4px 10px;
       background: var(--bg-color);
-      border-radius: 6px; /* Tags cuadraditos tipo Linear */
+      border-radius: 6px;
+      /* Tags cuadraditos tipo Linear */
       color: var(--text-main);
       border: 1px solid var(--border-color);
       transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     }
 
     .card:hover {
-      transform: scale(1.02) translateY(-6px); /* Sensación inmersiva de tarjeta física 3D levantada */
+      transform: scale(1.02) translateY(-6px);
+      /* Sensación inmersiva de tarjeta física 3D levantada */
       box-shadow: var(--shadow-glow);
-      border-color: var(--accent-main); /* Activa el contexto pro al presionar */
+      border-color: var(--accent-main);
+      /* Activa el contexto pro al presionar */
     }
 
     /* ==== FORMULARIO DE CONTACTO ==== */
@@ -615,7 +726,8 @@
       width: 100%;
     }
 
-    input, textarea {
+    input,
+    textarea {
       padding: 14px 16px;
       border-radius: 8px;
       background: var(--card-bg);
@@ -627,13 +739,14 @@
       /* Transiciones suaves en cajas de texto */
       transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
     }
-    
+
     textarea {
       resize: vertical;
       min-height: 120px;
     }
 
-    input:focus, textarea:focus {
+    input:focus,
+    textarea:focus {
       outline: none;
       border-color: var(--accent-main);
       /* Sombra de contorno sutil SaaS, no neón grueso */
@@ -649,14 +762,16 @@
       font-weight: 600;
       font-size: 1rem;
       cursor: pointer;
-      box-shadow: var(--shadow-sm); /* Natural */
+      box-shadow: var(--shadow-sm);
+      /* Natural */
       transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     button[type="submit"]:hover {
       background: var(--accent-hover);
-      transform: scale(1.03) translateY(-2px); /* Uniformidad modal global con todos los botones */
-      box-shadow: var(--shadow-glow); 
+      transform: scale(1.03) translateY(-2px);
+      /* Uniformidad modal global con todos los botones */
+      box-shadow: var(--shadow-glow);
     }
 
     footer {
@@ -681,7 +796,6 @@
       transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
       animation: fadeIn 0.5s ease;
     }
-
   </style>
 </head>
 
@@ -883,7 +997,7 @@
     // ==== GESTIÓN DEL TEMA Y ESTADO ====
     const themeToggle = document.getElementById('theme-toggle');
     const root = document.documentElement;
-    let particleColor = "rgba(124, 58, 237, 0.35)"; 
+    let particleColor = "rgba(124, 58, 237, 0.35)";
 
     function setTheme(theme) {
       root.setAttribute('data-theme', theme);
@@ -963,10 +1077,10 @@
 
     window.addEventListener("scroll", () => {
       if (timelineContainer && timelineItems.length > 0) {
-        
+
         const rect = timelineContainer.getBoundingClientRect();
         const centerScreen = window.innerHeight / 2;
-        
+
         let progressHeight = centerScreen - rect.top;
         progressHeight = Math.max(0, Math.min(progressHeight, rect.height));
         timelineProgress.style.height = `${progressHeight}px`;
@@ -979,7 +1093,7 @@
 
           if (centerScreen >= triggerZone) {
             timelineItems[i].classList.add("active");
-            break; 
+            break;
           }
         }
       }
@@ -1010,12 +1124,12 @@
     }
 
     function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height); 
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach(p => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = particleColor; 
+        ctx.fillStyle = particleColor;
         ctx.fill();
 
         p.x += p.dx;
@@ -1026,7 +1140,7 @@
       });
       requestAnimationFrame(draw);
     }
-    draw(); 
+    draw();
 
     // ==== FORMULARIO ASÍNCRONO ====
     const form = document.querySelector("#contacto form");
@@ -1039,7 +1153,7 @@
         const message = document.getElementById("form-message");
         message.style.display = "block";
         setTimeout(() => message.style.display = "none", 4000);
-        form.reset(); 
+        form.reset();
       } catch (error) {
         alert("Error al enviar ❌");
       }
@@ -1055,12 +1169,12 @@
 
     window.addEventListener('scroll', () => {
       if (!heroSection) return;
-      
+
       // Control de rendimiento estricto con requestAnimationFrame (evita lags y cálculos pesados en scroll)
       if (!isTicking) {
         window.requestAnimationFrame(() => {
           const scrollY = window.scrollY;
-          
+
           if (scrollY <= window.innerHeight) {
             // Curva de opacidad que empieza a caer progresivamente más rápido (Efecto suave profesional)
             const ratio = Math.min(scrollY, 600) / 600;
@@ -1073,7 +1187,7 @@
             }
             if (heroTitle) {
               heroTitle.style.transform = `translateY(-${scrollY * 0.45}px)`; // Medio
-              heroTitle.style.opacity = fadeVal; 
+              heroTitle.style.opacity = fadeVal;
             }
             if (heroSubtitle) {
               heroSubtitle.style.transform = `translateY(-${scrollY * 0.65}px)`; // Medio-rápido
@@ -1094,4 +1208,5 @@
   </script>
 
 </body>
+
 </html>
