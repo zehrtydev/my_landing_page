@@ -391,21 +391,19 @@
 
     .timeline-icon {
       position: absolute;
-      left: -40px;
-      /* Relativo al padding del contenedor timeline */
+      left: -42px; /* Alineación perfecta con la barra de progreso (+20px) porque el centro de 44 es 22. */
       top: 15px;
-      background: var(--bg-color);
-      border: 2px solid var(--border-color);
+      background: white; /* Siempre blanco para legibilidad perfecta de SVG/PNGs con fondos */
+      border: 3px solid var(--border-color);
       color: var(--text-muted);
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 3;
-      transition: background-color 0.4s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-      font-size: 1.1rem;
+      transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .exp {
@@ -474,11 +472,11 @@
     }
 
     .timeline-item.active .timeline-icon {
-      background: var(--accent-main);
+      background: white; /* Mantenemos blanco para que los colores originales del logo brillen y destaquen siempre solos */
       border-color: var(--accent-main);
-      color: white;
-      transform: scale(1.2);
-      box-shadow: 0 0 25px var(--accent-glow-strong);
+      color: var(--accent-main); 
+      transform: scale(1.15);
+      box-shadow: 0 0 30px var(--accent-glow-strong);
     }
 
     /* ==== ESTILOS DEL TEXTO EN LA SECCIÓN SOBRE MÍ ==== */
@@ -678,24 +676,19 @@
 
         /* ==== ESTILOS PARA LOGOS PERSONALIZADOS EN TIMELINE ==== */
     .timeline-icon img {
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
-      transition: filter 0.3s ease, transform 0.3s ease;
+      width: 26px; /* Aumentado por un contenedor más ancho (44px) dándole un respiro perfecto */
+      height: 26px;
+      object-fit: contain; /* Obliga matemáticamente a que ningún logo se estire */
+      
+      /* El apagado monocromático universalmente equilibrado */
+      filter: grayscale(100%) opacity(0.4); 
+      transition: filter 0.4s ease, transform 0.4s ease;
     }
 
-    /* En estado inactivo, convertimos el logo a un tono gris monocromático elegante adaptado al tema */
-    [data-theme="dark"] .timeline-item:not(.active) .timeline-icon img {
-      filter: brightness(0) invert(0.6); /* Gris platino para modo oscuro */
-    }
-
-    [data-theme="light"] .timeline-item:not(.active) .timeline-icon img {
-      filter: brightness(0) invert(0.3); /* Gris oscuro para modo claro */
-    }
-
-    /* Al pasar por la línea (fondo morado), convertimos el logo a blanco puro para impacto total */
+    /* ¡Al activar, traemos el logo al color puro de la vida real! */
     .timeline-item.active .timeline-icon img {
-      filter: brightness(0) invert(1); 
+      filter: grayscale(0%) opacity(1); 
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -1002,14 +995,14 @@
         // BÚSQUEDA DEL ÍTEM ACTIVO CON ALTA PRECISIÓN FÍSICA Y VISUAL
         for (let i = timelineItems.length - 1; i >= 0; i--) {
           const itemRect = timelineItems[i].getBoundingClientRect();
-
+          
           // La línea de progreso termina exactamente en "centerScreen".
-          // El icono tiene top: 15px. Más su propia mitad (20px) = 35px aprox desde el top de la caja
-          const triggerZone = itemRect.top + 35;
+          // Top: 15px. Mas de su propia mitad (22px de 44px totales) = 37px exactos de choque
+          const triggerZone = itemRect.top + 37; 
 
           if (centerScreen >= triggerZone) {
             timelineItems[i].classList.add("active");
-            break;
+            break; 
           }
         }
       }
