@@ -11,13 +11,64 @@
   <script src="https://kit.fontawesome.com/4b8b3c3c5f.js" crossorigin="anonymous"></script>
 
   <style>
+    /* ==== VARIABLES DE TEMA ==== */
+    :root {
+      /* Tema Claro (Por defecto o si el sistema es light) */
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --card-active: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #e2e8f0;
+
+      --accent-main: #6366f1;
+      /* Morado/Índigo vibrante y amigable */
+      --accent-hover: #4f46e5;
+      --accent-glow: rgba(99, 102, 241, 0.2);
+      --accent-glow-strong: rgba(99, 102, 241, 0.5);
+
+      --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.08);
+      --shadow-inset: inset 0 0 10px rgba(0, 0, 0, 0.03);
+
+      --particle-color: rgba(99, 102, 241, 0.3);
+      --form-success-bg: #10b981;
+      --form-success-text: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      /* Tema Oscuro (Moderno y profundo) */
+      --bg-color: #0f172a;
+      /* Slate oscuro elegante */
+      --card-bg: #1e293b;
+      --card-active: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --border-color: #334155;
+
+      --accent-main: #a855f7;
+      /* Violeta original vibrante para modo oscuro */
+      --accent-hover: #9333ea;
+      --accent-glow: rgba(168, 85, 247, 0.25);
+      --accent-glow-strong: rgba(168, 85, 247, 0.6);
+
+      --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.4);
+      --shadow-inset: inset 0 0 10px rgba(0, 0, 0, 0.5);
+
+      --particle-color: rgba(168, 85, 247, 0.4);
+      --form-success-bg: #ffffff;
+      --form-success-text: #0f172a;
+    }
+
     /* ==== ESTILOS GENERALES ==== */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: #0b0b1a;
-      color: #e0e0ff;
+      background-color: var(--bg-color);
+      color: var(--text-main);
       overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     /* ==== ESTILOS DEL FONDO (PARTÍCULAS) ==== */
@@ -32,16 +83,16 @@
     header {
       text-align: center;
       padding: 120px 20px 100px;
-      background: radial-gradient(circle at top, rgba(168, 85, 247, 0.2), transparent);
+      background: radial-gradient(circle at top, var(--accent-glow), transparent);
     }
 
     .profile {
       width: 130px;
       height: 130px;
       border-radius: 50%;
-      border: 3px solid #a855f7;
+      border: 3px solid var(--accent-main);
       margin-bottom: 20px;
-      box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+      box-shadow: 0 0 25px var(--accent-glow-strong);
       animation: glowPulse 3s infinite;
     }
 
@@ -49,11 +100,11 @@
 
       0%,
       100% {
-        box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+        box-shadow: 0 0 20px var(--accent-glow);
       }
 
       50% {
-        box-shadow: 0 0 40px rgba(168, 85, 247, 0.7);
+        box-shadow: 0 0 40px var(--accent-glow-strong);
       }
     }
 
@@ -64,7 +115,7 @@
 
     .subtitle {
       font-size: 1.1rem;
-      color: #c4b5fd;
+      color: var(--text-muted);
     }
 
     .hero-buttons {
@@ -75,7 +126,7 @@
       display: inline-block;
       margin: 10px;
       padding: 12px 22px;
-      background: #a855f7;
+      background: var(--accent-main);
       color: white;
       border-radius: 8px;
       font-weight: bold;
@@ -86,28 +137,36 @@
 
     @keyframes glowBtn {
       from {
-        box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+        box-shadow: 0 0 10px var(--accent-glow);
       }
 
       to {
-        box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
+        box-shadow: 0 0 25px var(--accent-glow-strong);
       }
     }
 
     a:hover {
-      background: #9333ea;
+      background: var(--accent-hover);
     }
 
     .secondary {
       background: transparent;
-      border: 1px solid #a855f7;
+      border: 1px solid var(--accent-main);
+      color: var(--accent-main);
+      animation: none;
+      /* Sin glow automático para mejor contraste y limpieza */
+    }
+
+    .secondary:hover {
+      background: var(--accent-main);
+      color: white;
     }
 
     section {
       max-width: 900px;
       margin: auto;
       padding: 50px 20px;
-      border-bottom: 1px solid #2a2a40;
+      border-bottom: 1px solid var(--border-color);
       opacity: 0;
       transform: translateY(40px);
       transition: all 0.8s ease;
@@ -120,10 +179,11 @@
 
     h2 {
       margin-bottom: 20px;
+      color: var(--text-main);
     }
 
     p {
-      color: #c4b5fd;
+      color: var(--text-muted);
       line-height: 1.6;
     }
 
@@ -135,110 +195,23 @@
     }
 
     .skill {
-      background: #1a1a2e;
+      background: var(--card-bg);
       padding: 10px 15px;
       border-radius: 20px;
       display: flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid #2a2a40;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, border-color 0.3s ease;
-      /* Optimizamos la transición del hover */
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.4s ease;
     }
 
     .skill:hover {
       transform: scale(1.05);
-      border-color: #a855f7;
+      border-color: var(--accent-main);
     }
 
-    /* ==== SECCIÓN DE EXPERIENCIA ==== */
-    .exp {
-      background: #1a1a2e;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #2a2a40;
-      transition: all 0.3s ease;
-      /* Transición general para suavidad visual */
-    }
-
-    /* ESTADO ACTIVO AL ENFOCAR UNA EXPERIENCIA */
-    .exp.active {
-      transform: scale(1.05);
-      background: #2a1a4a;
-      border-color: #a855f7;
-      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
-    }
-
-    .timeline-item.active .timeline-icon {
-      transform: scale(1.2);
-      box-shadow: 0 0 30px rgba(168, 85, 247, 1);
-    }
-
-    /* ==== SECCIÓN DE PROYECTOS ==== */
-    .projects {
-      display: grid;
-      gap: 20px;
-    }
-
-    .card {
-      background: #1a1a2e;
-      padding: 20px;
-      border-radius: 12px;
-      transition: 0.3s;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      border: 1px solid #2a2a40;
-    }
-
-    .card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.25);
-    }
-
-    /* ==== FORMULARIO DE CONTACTO ==== */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    input,
-    textarea {
-      padding: 10px;
-      border-radius: 8px;
-      background: #1a1a2e;
-      border: 1px solid #2a2a40;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-      color: white;
-      font-family: inherit;
-      /* Optimizamos: Heredar fuente de la familia general */
-    }
-
-    input:focus,
-    textarea:focus {
-      outline: none;
-      border-color: #a855f7;
-    }
-
-    button {
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: #a855f7;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      animation: glowBtn 2s infinite alternate;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #a855f7;
-    }
-
-    /* ==== LÍNEA DE TIEMPO (TIMELINE) ==== */
+    /* ==== ESTILOS DE LA SECCIÓN DE EXPERIENCIA (Y TIMELINE) ==== */
     .timeline {
       position: relative;
       margin-top: 30px;
@@ -252,9 +225,67 @@
       top: 0;
       width: 2px;
       height: var(--line-height);
-      background: #a855f7;
-      box-shadow: 0 0 10px #a855f7;
+      background: var(--accent-main);
+      box-shadow: 0 0 10px var(--accent-main);
       transition: height 0.4s ease-out;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-icon {
+      position: absolute;
+      left: -5px;
+      top: 0;
+      background: var(--accent-main);
+      color: white;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px var(--accent-glow-strong);
+      z-index: 2;
+      transition: background-color 0.4s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .exp {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .exp ul {
+      padding-left: 20px;
+    }
+
+    .exp li {
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    .timeline-item.active {
+      transform: scale(1.03);
+    }
+
+    .timeline-item.active .exp {
+      background: var(--card-active);
+      border-color: var(--accent-main);
+      box-shadow: 0 15px 35px var(--accent-glow);
+    }
+
+    .timeline-item.active .timeline-icon {
+      transform: scale(1.2);
+      box-shadow: 0 0 30px var(--accent-main);
     }
 
     /* ==== ESTILOS DEL TEXTO EN LA SECCIÓN SOBRE MÍ ==== */
@@ -268,57 +299,85 @@
       font-size: 1.05rem;
     }
 
-    .timeline-item {
-      position: relative;
-      margin-bottom: 40px;
+    /* ==== SECCIÓN DE PROYECTOS ==== */
+    .projects {
+      display: grid;
+      gap: 20px;
     }
 
-    .timeline-icon {
-      position: absolute;
-      left: -5px;
-      top: 0;
-      background: #a855f7;
-      color: white;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 20px 40px var(--accent-glow);
+    }
+
+    /* ==== FORMULARIO DE CONTACTO ==== */
+    form {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 15px rgba(168, 85, 247, 0.7);
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .timeline-icon {
-      z-index: 2;
+    input,
+    textarea {
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-inset);
+      color: var(--text-main);
+      font-family: inherit;
+      transition: background-color 0.4s ease, border-color 0.3s ease, color 0.4s ease;
     }
 
-    .exp {
-      position: relative;
-      z-index: 1;
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent-main);
     }
 
-    /* Mejoras de indentación y color en las viñetas */
-    .exp ul {
-      padding-left: 20px;
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent-main);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      animation: glowBtn 2s infinite alternate;
+      transition: background-color 0.3s ease;
     }
 
-    .exp li {
-      margin-bottom: 8px;
-      color: #c4b5fd;
+    button:hover {
+      background: var(--accent-hover);
     }
 
-    /* Mensaje del estatus del envío de correo */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--accent-main);
+      font-weight: 500;
+    }
+
     #form-message {
       margin-top: 15px;
       padding: 12px;
       border-radius: 8px;
-      background: white;
-      color: #0b0b1a;
+      background: var(--form-success-bg);
+      color: var(--form-success-text);
       font-weight: bold;
       text-align: center;
       display: none;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-      border-left: 5px solid #a855f7;
+      box-shadow: var(--shadow-md);
+      border-left: 5px solid var(--accent-main);
       animation: fadeIn 0.5s ease;
     }
 
@@ -334,33 +393,46 @@
       }
     }
 
-    /* Optimizamos: Consolidación de clases redundantes de transiciones */
-    .timeline-item {
-      transition: all 0.3s ease;
+    /* ==== BOTÓN FLOTANTE PARA CAMBIAR EL TEMA ==== */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      z-index: 1000;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.3s ease;
     }
 
-    .timeline-item.active {
-      transform: scale(1.03);
-    }
-
-    .timeline-item.active .exp {
-      background: #2a1a4a;
-      border-color: #a855f7;
-      box-shadow: 0 15px 35px rgba(168, 85, 247, 0.3);
-    }
-
-    .timeline-item.active .timeline-icon {
-      box-shadow: 0 0 25px rgba(168, 85, 247, 0.9);
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      border-color: var(--accent-main);
+      color: var(--accent-main);
     }
   </style>
 </head>
 
 <body>
 
+  <!-- BOTÓN DE TEMA INTERACTIVO -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar modo de tema">
+    <i class="fas fa-moon"></i>
+  </button>
+
   <canvas id="particles"></canvas>
 
   <header>
-    <img src="https://via.placeholder.com/120" class="profile">
+    <img src="https://via.placeholder.com/120" class="profile" alt="Perfil">
     <h1>Manuel Amado (Zehrty)</h1>
     <p class="subtitle">
       Especialista en Soporte TI | Futuro Desarrollador Web
@@ -482,6 +554,56 @@
   <footer>© 2026 Manuel Amado</footer>
 
   <script>
+    // ==== GESTIÓN DEL TEMA (MODOS CLARO Y OSCURO) ====
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const root = document.documentElement;
+    let particleColor = "rgba(99, 102, 241, 0.3)"; // Color inicial (ligará al CSS)
+
+    function setTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+
+      if (theme === 'dark') {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      }
+
+      // Permitimos que el navegador actualice los estilos CSS y repintamos color de partícula
+      setTimeout(() => {
+        particleColor = getComputedStyle(root).getPropertyValue('--particle-color').trim() || particleColor;
+      }, 50);
+    }
+
+    // 1. Verificar si hay preferencia guardada por el usuario
+    const savedTheme = localStorage.getItem('theme');
+    // 2. Verificar la preferencia por defecto de su sistema operativo
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else if (systemPrefersDark) {
+      setTheme('dark');
+    } else {
+      setTheme('light'); // El light mode más amigable y limpio
+    }
+
+    // Acción del botón
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = root.getAttribute('data-theme');
+      setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // Cambios dinámicos en el sistema operativo
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+
     // ==== ANIMACIONES AL HACER SCROLL (SECCIONES Y LÍNEA DE TIEMPO) ====
     const timeline = document.querySelector(".timeline");
     const sections = document.querySelectorAll("section");
@@ -562,7 +684,9 @@
       particles.forEach(p => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(168,85,247,0.5)"; // Color lila suave
+
+        // El color aquí toma la variable dinámica de Theme Light/Dark 
+        ctx.fillStyle = particleColor;
         ctx.fill();
 
         // Sumar velocidad en posición visual para crear dinamismo
@@ -611,7 +735,7 @@
     // DESACTIVAR RESTAURACIÓN DE SCROLL POR DEFECTO PARA QUE INICIE ARRIBA
     history.scrollRestoration = "manual";
 
-    // TRANSPORTAR PANTALLA AL TOPE AL RECARGAR PÁGINA
+    // Transportar pantalla al tope al recargar página
     window.onload = () => {
       window.scrollTo(0, 0);
     };
