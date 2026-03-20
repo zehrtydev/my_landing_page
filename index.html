@@ -532,7 +532,7 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-      max-width: 600px;
+      width: 100%;
     }
 
     input,
@@ -612,22 +612,32 @@
       }
     }
 
-    /* ==== BOTÓN FLOTANTE TEMA ==== */
+    /* ==== BOTÓN FLOTANTE TEMA (FAB) ==== */
     .theme-toggle-btn {
-      background: none;
-      border: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
       color: var(--text-main);
-      font-size: 1.3rem;
+      font-size: 1.6rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: color 0.3s ease, transform 0.3s ease;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      z-index: 9999;
     }
 
     .theme-toggle-btn:hover {
-      color: var(--accent-main);
       transform: scale(1.1) rotate(15deg);
+      color: var(--accent-main);
+      border-color: var(--accent-main);
+      box-shadow: 0 10px 25px var(--accent-glow);
     }
 
     /* Pequeño arreglo decorativo para el contenedor del inicio */
@@ -641,6 +651,11 @@
 <body>
 
   <!-- NAVBAR FIXED -->
+  <!-- BOTÓN FLOTANTE DE TEMA (FAB) -->
+  <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar modo de tema">
+    <i class="fas fa-moon"></i>
+  </button>
+
   <nav class="navbar">
     <a href="#inicio" class="logo">ZehrtyDEV</a>
     <ul class="nav-links">
@@ -650,10 +665,6 @@
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-
-    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar modo de tema">
-      <i class="fas fa-moon"></i>
-    </button>
   </nav>
 
   <canvas id="particles"></canvas>
