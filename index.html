@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZehrtyDEV</title>
   <link rel="icon" type="image/png" href="favicon.png">
 
-  <!-- ICONOS -->
+  <!-- IMPORTACIÓN DE ICONOS (FONTAWESOME) -->
   <script src="https://kit.fontawesome.com/4b8b3c3c5f.js" crossorigin="anonymous"></script>
 
   <style>
+    /* ==== ESTILOS GENERALES ==== */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -18,7 +20,7 @@
       overflow-x: hidden;
     }
 
-    /* PARTICULAS */
+    /* ==== ESTILOS DEL FONDO (PARTÍCULAS) ==== */
     canvas {
       position: fixed;
       top: 0;
@@ -26,11 +28,11 @@
       z-index: -1;
     }
 
-    /* HERO */
+    /* ==== SECCIÓN PRINCIPAL (HERO) ==== */
     header {
       text-align: center;
       padding: 120px 20px 100px;
-      background: radial-gradient(circle at top, rgba(168,85,247,0.2), transparent);
+      background: radial-gradient(circle at top, rgba(168, 85, 247, 0.2), transparent);
     }
 
     .profile {
@@ -39,13 +41,20 @@
       border-radius: 50%;
       border: 3px solid #a855f7;
       margin-bottom: 20px;
-      box-shadow: 0 0 25px rgba(168,85,247,0.4);
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
       animation: glowPulse 3s infinite;
     }
 
     @keyframes glowPulse {
-      0%, 100% { box-shadow: 0 0 20px rgba(168,85,247,0.3); }
-      50% { box-shadow: 0 0 40px rgba(168,85,247,0.7); }
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 0 40px rgba(168, 85, 247, 0.7);
+      }
     }
 
     h1 {
@@ -76,8 +85,13 @@
     }
 
     @keyframes glowBtn {
-      from { box-shadow: 0 0 10px rgba(168,85,247,0.3); }
-      to { box-shadow: 0 0 25px rgba(168,85,247,0.7); }
+      from {
+        box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+      }
+
+      to {
+        box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
+      }
     }
 
     a:hover {
@@ -113,7 +127,7 @@
       line-height: 1.6;
     }
 
-    /* SKILLS */
+    /* ==== SECCIÓN DE HABILIDADES (SKILLS) ==== */
     .skills {
       display: flex;
       flex-wrap: wrap;
@@ -129,36 +143,38 @@
       gap: 8px;
       border: 1px solid #2a2a40;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, border-color 0.3s ease; /* Optimizamos la transición del hover */
     }
 
-.skill:hover {
-  transform: scale(1.05);
-  border-color: #a855f7;
-}
+    .skill:hover {
+      transform: scale(1.05);
+      border-color: #a855f7;
+    }
 
-    /* EXPERIENCIA */
+    /* ==== SECCIÓN DE EXPERIENCIA ==== */
     .exp {
       background: #1a1a2e;
       padding: 20px;
       border-radius: 10px;
       margin-bottom: 15px;
       border: 1px solid #2a2a40;
+      transition: all 0.3s ease; /* Transición general para suavidad visual */
     }
 
-/* ESTADO ACTIVO EXPERIENCIA */
-.exp.active {
-  transform: scale(1.05);
-  background: #2a1a4a;
-  border-color: #a855f7;
-  box-shadow: 0 20px 40px rgba(168,85,247,0.4);
-}
+    /* ESTADO ACTIVO AL ENFOCAR UNA EXPERIENCIA */
+    .exp.active {
+      transform: scale(1.05);
+      background: #2a1a4a;
+      border-color: #a855f7;
+      box-shadow: 0 20px 40px rgba(168,85,247,0.4);
+    }
 
-.timeline-item.active .timeline-icon {
-  transform: scale(1.2);
-  box-shadow: 0 0 30px rgba(168,85,247,1);
-}
+    .timeline-item.active .timeline-icon {
+      transform: scale(1.2);
+      box-shadow: 0 0 30px rgba(168,85,247,1);
+    }
 
-    /* PROYECTOS */
+    /* ==== SECCIÓN DE PROYECTOS ==== */
     .projects {
       display: grid;
       gap: 20px;
@@ -175,10 +191,10 @@
 
     .card:hover {
       transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 20px 40px rgba(168,85,247,0.25);
+      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.25);
     }
 
-    /* FORMULARIO */
+    /* ==== FORMULARIO DE CONTACTO ==== */
     form {
       display: flex;
       flex-direction: column;
@@ -192,6 +208,7 @@
       border: 1px solid #2a2a40;
       box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
       color: white;
+      font-family: inherit; /* Optimizamos: Heredar fuente de la familia general */
     }
 
     input:focus, textarea:focus {
@@ -215,14 +232,15 @@
       padding: 30px;
       color: #a855f7;
     }
-/* TIMELINE */
-.timeline {
-  position: relative;
-  margin-top: 30px;
-  padding-left: 30px;
-}
 
-.timeline::before {
+    /* ==== LÍNEA DE TIEMPO (TIMELINE) ==== */
+    .timeline {
+      position: relative;
+      margin-top: 30px;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
   content: "";
   position: absolute;
   left: 15px;
@@ -234,12 +252,7 @@
   transition: height 0.4s ease-out;
 }
 
-.about p {
-  max-width: 700px;
-  margin: auto;
-  font-size: 1.05rem;
-}
-
+/* ==== ESTILOS DEL TEXTO EN LA SECCIÓN SOBRE MÍ ==== */
 .about {
   text-align: center;
 }
@@ -247,38 +260,39 @@
 .about p {
   max-width: 700px;
   margin: auto;
+  font-size: 1.05rem;
 }
 
 .timeline-item {
-  position: relative;
-  margin-bottom: 40px;
-}
+      position: relative;
+      margin-bottom: 40px;
+    }
 
-.timeline-icon {
-  position: absolute;
-  left: -5px;
-  top: 0;
-  background: #a855f7;
-  color: white;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 15px rgba(168,85,247,0.7);
-}
+    .timeline-icon {
+      position: absolute;
+      left: -5px;
+      top: 0;
+      background: #a855f7;
+      color: white;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.7);
+    }
 
-.timeline-icon {
-  z-index: 2;
-}
+    .timeline-icon {
+      z-index: 2;
+    }
 
-.exp {
-  position: relative;
-  z-index: 1;
-}
+    .exp {
+      position: relative;
+      z-index: 1;
+    }
 
-/* mejora visual */
+    /* Mejoras de indentación y color en las viñetas */
 .exp ul {
   padding-left: 20px;
 }
@@ -288,6 +302,7 @@
   color: #c4b5fd;
 }
 
+/* Mensaje del estatus del envío de correo */
 #form-message {
   margin-top: 15px;
   padding: 12px;
@@ -313,16 +328,7 @@
   }
 }
 
-/* HOVER EXPERIENCIA */
-.timeline-item .exp {
-  transition: all 0.3s ease;
-}
-
-/* ACTIVACIÓN POR SCROLL */
-.timeline-item .exp {
-  transition: all 0.3s ease;
-}
-
+/* Optimizamos: Consolidación de clases redundantes de transiciones */
 .timeline-item {
   transition: all 0.3s ease;
 }
@@ -346,283 +352,267 @@
 
 <body>
 
-<canvas id="particles"></canvas>
+  <canvas id="particles"></canvas>
 
-<header>
-  <img src="https://via.placeholder.com/120" class="profile">
-  <h1>Manuel Amado (Zehrty)</h1>
-  <p class="subtitle">
-Especialista en Soporte TI | Futuro Desarrollador Web
-</p>
+  <header>
+    <img src="https://via.placeholder.com/120" class="profile">
+    <h1>Manuel Amado (Zehrty)</h1>
+    <p class="subtitle">
+      Especialista en Soporte TI | Futuro Desarrollador Web
+    </p>
 
-  <div class="hero-buttons">
-    <a href="#proyectos">Ver proyectos</a>
-    <a href="#contacto" class="secondary">Contáctame</a>
-  </div>
-</header>
+    <div class="hero-buttons">
+      <a href="#proyectos">Ver proyectos</a>
+      <a href="#contacto" class="secondary">Contáctame</a>
+    </div>
+  </header>
 
-<section class="about">
-  <h2>Sobre mí</h2>
-  <p>
-    Técnico en Sistemas con experiencia en soporte técnico, mantenimiento de equipos y gestión de infraestructura tecnológica. A lo largo de mi trayectoria he trabajado en la administración de redes, servidores y sistemas de videovigilancia, garantizando la operatividad y seguridad de los entornos informáticos. Me considero una persona responsable, proactiva y orientada al servicio, con facilidad para adaptarme a nuevos entornos y aprender rápidamente. Mi objetivo es seguir creciendo profesionalmente en el área tecnológica, aportando soluciones que mejoren la eficiencia y la continuidad de los procesos dentro de la organización.
-  </p>
-</section>
+  <section class="about">
+    <h2>Sobre mí</h2>
+    <p>
+      Técnico en Sistemas con experiencia en soporte técnico, mantenimiento de equipos y gestión de infraestructura
+      tecnológica. A lo largo de mi trayectoria he trabajado en la administración de redes, servidores y sistemas de
+      videovigilancia, garantizando la operatividad y seguridad de los entornos informáticos. Me considero una persona
+      responsable, proactiva y orientada al servicio, con facilidad para adaptarme a nuevos entornos y aprender
+      rápidamente. Mi objetivo es seguir creciendo profesionalmente en el área tecnológica, aportando soluciones que
+      mejoren la eficiencia y la continuidad de los procesos dentro de la organización.
+    </p>
+  </section>
 
-<section><h2>Habilidades</h2><div class="skills">
-<div class="skill"><i class="fab fa-html5"></i> HTML5</div>
-<div class="skill"><i class="fab fa-css3-alt"></i> CSS3</div>
-<div class="skill"><i class="fab fa-git-alt"></i> Git</div>
-<div class="skill"><i class="fab fa-github"></i> GitHub</div>
-</div></section>
+  <section>
+    <h2>Habilidades</h2>
+    <div class="skills">
+      <div class="skill"><i class="fab fa-html5"></i> HTML5</div>
+      <div class="skill"><i class="fab fa-css3-alt"></i> CSS3</div>
+      <div class="skill"><i class="fab fa-git-alt"></i> Git</div>
+      <div class="skill"><i class="fab fa-github"></i> GitHub</div>
+    </div>
+  </section>
 
-<section>
-  <h2>Experiencia</h2>
+  <section>
+    <h2>Experiencia</h2>
 
-  <div class="timeline">
+    <div class="timeline">
 
-    <div class="timeline-item">
-      <div class="timeline-icon"><i class="fas fa-server"></i></div>
-      <div class="exp">
-        <h3>Auxiliar de Sistemas — Petrocasinos S.A</h3>
-        <p><strong>Agosto 2024 - Actualidad</strong></p>
-        <ul>
-          <li>Administración de servidores físicos y virtuales (Windows Server).</li>
-          <li>Configuración y monitoreo de redes corporativas.</li>
-          <li>Mantenimiento de equipos, impresoras y periféricos.</li>
-          <li>Gestión de tickets de soporte y atención a usuarios.</li>
-          <li>Configuración de CCTV y seguridad informática.</li>
-        </ul>
+      <div class="timeline-item">
+        <div class="timeline-icon"><i class="fas fa-server"></i></div>
+        <div class="exp">
+          <h3>Auxiliar de Sistemas — Petrocasinos S.A</h3>
+          <p><strong>Agosto 2024 - Actualidad</strong></p>
+          <ul>
+            <li>Administración de servidores físicos y virtuales (Windows Server).</li>
+            <li>Configuración y monitoreo de redes corporativas.</li>
+            <li>Mantenimiento de equipos, impresoras y periféricos.</li>
+            <li>Gestión de tickets de soporte y atención a usuarios.</li>
+            <li>Configuración de CCTV y seguridad informática.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-icon"><i class="fas fa-hospital"></i></div>
+        <div class="exp">
+          <h3>Técnico de Sistemas — FAFOS</h3>
+          <p><strong>Marzo 2024 - Agosto 2024</strong></p>
+          <ul>
+            <li>Soporte técnico en sitio y remoto.</li>
+            <li>Gestión de usuarios y correos institucionales.</li>
+            <li>Mantenimiento de equipos e impresoras.</li>
+            <li>Monitoreo de CCTV.</li>
+            <li>Soporte al software clínico.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-icon"><i class="fas fa-network-wired"></i></div>
+        <div class="exp">
+          <h3>Técnico de Sistemas — TOOL S.S</h3>
+          <p><strong>Abril 2022 - Marzo 2024</strong></p>
+          <ul>
+            <li>Soporte remoto a nivel nacional.</li>
+            <li>Mantenimiento preventivo y correctivo.</li>
+            <li>Gestión de inventario tecnológico.</li>
+            <li>Administración de sistema de tickets.</li>
+            <li>Pruebas funcionales de aplicaciones web.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <h2>Proyectos</h2>
+
+    <div class="projects">
+      <div class="card">
+        <h3>Portafolio Web</h3>
+        <p>Landing page personal desarrollada con HTML, CSS y JavaScript, incluyendo animaciones, efectos visuales y
+          diseño responsive.</p>
       </div>
     </div>
 
-    <div class="timeline-item">
-      <div class="timeline-icon"><i class="fas fa-hospital"></i></div>
-      <div class="exp">
-        <h3>Técnico de Sistemas — FAFOS</h3>
-        <p><strong>Marzo 2024 - Agosto 2024</strong></p>
-        <ul>
-          <li>Soporte técnico en sitio y remoto.</li>
-          <li>Gestión de usuarios y correos institucionales.</li>
-          <li>Mantenimiento de equipos e impresoras.</li>
-          <li>Monitoreo de CCTV.</li>
-          <li>Soporte al software clínico.</li>
-        </ul>
-      </div>
-    </div>
+  </section>
 
-    <div class="timeline-item">
-      <div class="timeline-icon"><i class="fas fa-network-wired"></i></div>
-      <div class="exp">
-        <h3>Técnico de Sistemas — TOOL S.S</h3>
-        <p><strong>Abril 2022 - Marzo 2024</strong></p>
-        <ul>
-          <li>Soporte remoto a nivel nacional.</li>
-          <li>Mantenimiento preventivo y correctivo.</li>
-          <li>Gestión de inventario tecnológico.</li>
-          <li>Administración de sistema de tickets.</li>
-          <li>Pruebas funcionales de aplicaciones web.</li>
-        </ul>
-      </div>
-    </div>
+  <section id="contacto">
+    <h2>Contacto</h2>
 
-  </div>
-</section>
+    <form action="https://formsubmit.co/zehrty.dev@gmail.com" method="POST">
 
-<section id="proyectos">
-  <h2>Proyectos</h2>
+      <input type="text" name="name" placeholder="Nombre" required>
+      <input type="email" name="email" placeholder="Correo" required>
+      <textarea name="message" placeholder="Mensaje" required></textarea>
 
-  <div class="projects">
-    <div class="card">
-      <h3>Portafolio Web</h3>
-      <p>Landing page personal desarrollada con HTML, CSS y JavaScript, incluyendo animaciones, efectos visuales y diseño responsive.</p>
-    </div>
-  </div>
+      <input type="hidden" name="_captcha" value="false">
 
-</section>
+      <button type="submit">Enviar</button>
 
-<section id="contacto">
-<h2>Contacto</h2>
+    </form>
 
-<form action="https://formsubmit.co/zehrty.dev@gmail.com" method="POST">
+    <div id="form-message">Mensaje enviado correctamente ✅</div>
 
-<input type="text" name="name" placeholder="Nombre" required>
-<input type="email" name="email" placeholder="Correo" required>
-<textarea name="message" placeholder="Mensaje" required></textarea>
+  </section>
 
-<input type="hidden" name="_captcha" value="false">
+  <footer>© 2026 Manuel Amado</footer>
 
-<button type="submit">Enviar</button>
+  <script>
+    // ==== ANIMACIONES AL HACER SCROLL (SECCIONES Y LÍNEA DE TIEMPO) ====
+    const timeline = document.querySelector(".timeline");
+    const sections = document.querySelectorAll("section");
+    const timelineItems = document.querySelectorAll(".timeline-item");
 
-</form>
+    window.addEventListener("scroll", () => {
+      // 1. Mostrar las secciones gradualmente al hacer scroll
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          sec.classList.add("show");
+        }
+      });
 
-<div id="form-message">Mensaje enviado correctamente ✅</div>
+      // 2. Progreso de la línea vertical en la sección de experiencia
+      if (timeline) {
+        const rect = timeline.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const progress = Math.min(Math.max((windowHeight - rect.top) / (rect.height + 200), 0), 1);
+        timeline.style.setProperty("--line-height", `${progress * 100}%`);
+      }
 
-</section>
+      // 3. Destacar activamente el elemento de experiencia más centrado visiblemente
+      let closestItem = null;
+      let minDistance = Infinity;
+      const screenCenter = window.innerHeight / 2;
 
-<footer>© 2026 Manuel Amado</footer>
+      timelineItems.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        const itemCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(screenCenter - itemCenter);
 
-<script>
-// 🔥 TIMELINE DRAW EFFECT
-const timeline = document.querySelector(".timeline");
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestItem = item;
+        }
+      });
 
-// SCROLL ANIMATION + TIMELINE
-const sections = document.querySelectorAll("section");
+      // Limpiamos los estados activos previos de todos los elementos
+      timelineItems.forEach(item => {
+        item.classList.remove("active");
+        const exp = item.querySelector(".exp");
+        if (exp) exp.classList.remove("active");
+      });
 
-window.addEventListener("scroll", () => {
-
-  // Animación de secciones
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      sec.classList.add("show");
-    }
-  });
-
-  // Animación del timeline
-  if (timeline) {
-
-// 🔥 ACTIVAR SOLO UNA EXPERIENCIA (VERSIÓN FINAL ESTABLE)
-const items = document.querySelectorAll(".timeline-item");
-
-let closestItem = null;
-let minDistance = Infinity;
-
-items.forEach(item => {
-  const rect = item.getBoundingClientRect();
-  const itemCenter = rect.top + rect.height / 2;
-  const screenCenter = window.innerHeight / 2;
-
-  const distance = Math.abs(screenCenter - itemCenter);
-
-  if (distance < minDistance) {
-    minDistance = distance;
-    closestItem = item;
-  }
-});
-
-// limpiar todos
-items.forEach(item => {
-  item.classList.remove("active");
-  item.querySelector(".exp").classList.remove("active");
-});
-
-// activar solo el más cercano
-if (closestItem) {
-  closestItem.classList.add("active");
-  closestItem.querySelector(".exp").classList.add("active");
-}
-
-    const rect = timeline.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    const progress = Math.min(
-      Math.max((windowHeight - rect.top) / (rect.height + 200), 0),
-      1
-    );
-
-    timeline.style.setProperty("--line-height", `${progress * 100}%`);
-  }
-
-  // 🔥 AQUI VA LO NUEVO
-  const items = document.querySelectorAll(".timeline-item");
-
-  items.forEach(item => {
-    const rect = item.getBoundingClientRect();
-    const triggerPoint = window.innerHeight * 0.6;
-
-    if (rect.top < triggerPoint && rect.bottom > 100) {
-      item.classList.add("active");
-    } else {
-      item.classList.remove("active");
-    }
-  });
-
-});
-
-const items = document.querySelectorAll(".timeline-item");
-
-items.forEach(item => {
-  const rect = item.getBoundingClientRect();
-  const triggerPoint = window.innerHeight * 0.6;
-
-  if (rect.top < triggerPoint && rect.bottom > 100) {
-    item.classList.add("active");
-  }
-});
-
-// PARTICLES
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for(let i=0;i<60;i++){
-  particles.push({
-    x: Math.random()*canvas.width,
-    y: Math.random()*canvas.height,
-    r: Math.random()*2,
-    dx: Math.random()*0.5,
-    dy: Math.random()*0.5
-  });
-}
-
-function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle="rgba(168,85,247,0.5)";
-    ctx.fill();
-
-    p.x+=p.dx;
-    p.y+=p.dy;
-
-    if(p.x>canvas.width) p.x=0;
-    if(p.y>canvas.height) p.y=0;
-  });
-  requestAnimationFrame(draw);
-}
-
-draw();
-
-// FORM SUBMIT SIN REDIRECCIÓN
-const form = document.querySelector("#contacto form");
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const data = new FormData(form);
-
-  try {
-    await fetch(form.action, {
-      method: "POST",
-      body: data
+      // Aplicamos estado activo solamente a la experiencia más cercana
+      if (closestItem) {
+        closestItem.classList.add("active");
+        const exp = closestItem.querySelector(".exp");
+        if (exp) exp.classList.add("active");
+      }
     });
 
-    const message = document.getElementById("form-message");
+    // ==== EFECTO DE PARTÍCULAS INTERACTIVAS DE FONDO ====
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
 
-message.style.display = "block";
+    // Ajuste del renderizado al tamaño exacto de la ventana del navegador
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-setTimeout(() => {
-  message.style.display = "none";
-}, 4000);
-    form.reset();
+    let particles = [];
+    // Inicializamos 60 partículas con propiedades aleatorias para variedad
+    for (let i = 0; i < 60; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2,
+        dx: Math.random() * 0.5,
+        dy: Math.random() * 0.5
+      });
+    }
 
-  } catch (error) {
-    alert("Error al enviar el mensaje ❌");
-  }
-});
+    // Bucle dinámico que anima y dibuja las partículas continuamente
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el cuadro anterior
 
-history.scrollRestoration = "manual";
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(168,85,247,0.5)"; // Color lila suave
+        ctx.fill();
 
-window.onload = () => {
-  window.scrollTo(0, 0);
-};
+        // Sumar velocidad en posición visual para crear dinamismo
+        p.x += p.dx;
+        p.y += p.dy;
 
-</script>
+        // Reposicionar partículas si salen de la visión en la pantalla
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y > canvas.height) p.y = 0;
+      });
+
+      // Continuar el ciclo pidiendo el próximo cuadro al navegador de manera eficiente
+      requestAnimationFrame(draw);
+    }
+    draw(); // Inicia la animación visual
+
+    // ==== ENVÍO DEL FORMULARIO DE CONTACTO ASÍNCRONO ====
+    const form = document.querySelector("#contacto form");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); // Evitamos que la página se reinicie para dar una apariencia más fluida
+
+      const data = new FormData(form);
+
+      try {
+        await fetch(form.action, {
+          method: "POST",
+          body: data
+        });
+
+        // Desplegamos advertencia visual exitosa
+        const message = document.getElementById("form-message");
+        message.style.display = "block";
+
+        // Ocultamos la advertencia después de 4 segundos
+        setTimeout(() => {
+          message.style.display = "none";
+        }, 4000);
+
+        form.reset(); // Restablecer inputs en blanco del formulario
+      } catch (error) {
+        alert("Error al intentar enviar el mensaje ❌");
+      }
+    });
+
+    // DESACTIVAR RESTAURACIÓN DE SCROLL POR DEFECTO PARA QUE INICIE ARRIBA
+    history.scrollRestoration = "manual";
+
+    // TRANSPORTAR PANTALLA AL TOPE AL RECARGAR PÁGINA
+    window.onload = () => {
+      window.scrollTo(0, 0);
+    };
+
+  </script>
 
 </body>
+
 </html>
