@@ -7,9 +7,11 @@
   <title>ZehrtyDEV</title>
   <link rel="icon" type="image/png" href="favicon.png">
 
+  <!-- IMPORTACIÓN DE ICONOS (FONTAWESOME) -->
   <script src="https://kit.fontawesome.com/4b8b3c3c5f.js" crossorigin="anonymous"></script>
 
   <style>
+    /* ==== ESTILOS GENERALES ==== */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -18,6 +20,7 @@
       overflow-x: hidden;
     }
 
+    /* ==== ESTILOS DEL FONDO (PARTÍCULAS) ==== */
     canvas {
       position: fixed;
       top: 0;
@@ -25,6 +28,7 @@
       z-index: -1;
     }
 
+    /* ==== SECCIÓN PRINCIPAL (HERO) ==== */
     header {
       text-align: center;
       padding: 120px 20px 100px;
@@ -37,6 +41,7 @@
       border-radius: 50%;
       border: 3px solid #a855f7;
       margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
       animation: glowPulse 3s infinite;
     }
 
@@ -122,6 +127,7 @@
       line-height: 1.6;
     }
 
+    /* ==== SECCIÓN DE HABILIDADES (SKILLS) ==== */
     .skills {
       display: flex;
       flex-wrap: wrap;
@@ -138,6 +144,7 @@
       border: 1px solid #2a2a40;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease, border-color 0.3s ease;
+      /* Optimizamos la transición del hover */
     }
 
     .skill:hover {
@@ -145,6 +152,7 @@
       border-color: #a855f7;
     }
 
+    /* ==== SECCIÓN DE EXPERIENCIA ==== */
     .exp {
       background: #1a1a2e;
       padding: 20px;
@@ -152,8 +160,85 @@
       margin-bottom: 15px;
       border: 1px solid #2a2a40;
       transition: all 0.3s ease;
+      /* Transición general para suavidad visual */
     }
 
+    /* ESTADO ACTIVO AL ENFOCAR UNA EXPERIENCIA */
+    .exp.active {
+      transform: scale(1.05);
+      background: #2a1a4a;
+      border-color: #a855f7;
+      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
+    }
+
+    .timeline-item.active .timeline-icon {
+      transform: scale(1.2);
+      box-shadow: 0 0 30px rgba(168, 85, 247, 1);
+    }
+
+    /* ==== SECCIÓN DE PROYECTOS ==== */
+    .projects {
+      display: grid;
+      gap: 20px;
+    }
+
+    .card {
+      background: #1a1a2e;
+      padding: 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      border: 1px solid #2a2a40;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.25);
+    }
+
+    /* ==== FORMULARIO DE CONTACTO ==== */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input,
+    textarea {
+      padding: 10px;
+      border-radius: 8px;
+      background: #1a1a2e;
+      border: 1px solid #2a2a40;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+      color: white;
+      font-family: inherit;
+      /* Optimizamos: Heredar fuente de la familia general */
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #a855f7;
+    }
+
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #a855f7;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      animation: glowBtn 2s infinite alternate;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #a855f7;
+    }
+
+    /* ==== LÍNEA DE TIEMPO (TIMELINE) ==== */
     .timeline {
       position: relative;
       margin-top: 30px;
@@ -166,32 +251,26 @@
       left: 15px;
       top: 0;
       width: 2px;
-      height: 0%;
+      height: var(--line-height);
       background: #a855f7;
       box-shadow: 0 0 10px #a855f7;
-      transition: height 0.3s ease;
+      transition: height 0.4s ease-out;
+    }
+
+    /* ==== ESTILOS DEL TEXTO EN LA SECCIÓN SOBRE MÍ ==== */
+    .about {
+      text-align: center;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.05rem;
     }
 
     .timeline-item {
       position: relative;
       margin-bottom: 40px;
-      transition: all 0.3s ease;
-    }
-
-    .timeline-item.active {
-      transform: scale(1.03);
-    }
-
-    .timeline-item.active .exp {
-      transform: scale(1.05);
-      background: #2a1a4a;
-      border-color: #a855f7;
-      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
-    }
-
-    .timeline-item.active .timeline-icon {
-      transform: scale(1.2);
-      box-shadow: 0 0 25px rgba(168, 85, 247, 0.9);
     }
 
     .timeline-icon {
@@ -206,12 +285,72 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.7);
     }
 
-    footer {
+    .timeline-icon {
+      z-index: 2;
+    }
+
+    .exp {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Mejoras de indentación y color en las viñetas */
+    .exp ul {
+      padding-left: 20px;
+    }
+
+    .exp li {
+      margin-bottom: 8px;
+      color: #c4b5fd;
+    }
+
+    /* Mensaje del estatus del envío de correo */
+    #form-message {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      background: white;
+      color: #0b0b1a;
+      font-weight: bold;
       text-align: center;
-      padding: 30px;
-      color: #a855f7;
+      display: none;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+      border-left: 5px solid #a855f7;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Optimizamos: Consolidación de clases redundantes de transiciones */
+    .timeline-item {
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item.active {
+      transform: scale(1.03);
+    }
+
+    .timeline-item.active .exp {
+      background: #2a1a4a;
+      border-color: #a855f7;
+      box-shadow: 0 15px 35px rgba(168, 85, 247, 0.3);
+    }
+
+    .timeline-item.active .timeline-icon {
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.9);
     }
   </style>
 </head>
@@ -221,9 +360,11 @@
   <canvas id="particles"></canvas>
 
   <header>
-    <img src="https://via.placeholder.com/120" class="profile" alt="Foto de Manuel Amado">
+    <img src="https://via.placeholder.com/120" class="profile">
     <h1>Manuel Amado (Zehrty)</h1>
-    <p class="subtitle">Especialista en Soporte TI | Futuro Desarrollador Web</p>
+    <p class="subtitle">
+      Especialista en Soporte TI | Futuro Desarrollador Web
+    </p>
 
     <div class="hero-buttons">
       <a href="#proyectos">Ver proyectos</a>
@@ -233,114 +374,248 @@
 
   <section class="about">
     <h2>Sobre mí</h2>
-    <p>Tu texto original aquí...</p>
+    <p>
+      Técnico en Sistemas con experiencia en soporte técnico, mantenimiento de equipos y gestión de infraestructura
+      tecnológica. A lo largo de mi trayectoria he trabajado en la administración de redes, servidores y sistemas de
+      videovigilancia, garantizando la operatividad y seguridad de los entornos informáticos. Me considero una persona
+      responsable, proactiva y orientada al servicio, con facilidad para adaptarme a nuevos entornos y aprender
+      rápidamente. Mi objetivo es seguir creciendo profesionalmente en el área tecnológica, aportando soluciones que
+      mejoren la eficiencia y la continuidad de los procesos dentro de la organización.
+    </p>
+  </section>
+
+  <section>
+    <h2>Habilidades</h2>
+    <div class="skills">
+      <div class="skill"><i class="fab fa-html5"></i> HTML5</div>
+      <div class="skill"><i class="fab fa-css3-alt"></i> CSS3</div>
+      <div class="skill"><i class="fab fa-git-alt"></i> Git</div>
+      <div class="skill"><i class="fab fa-github"></i> GitHub</div>
+    </div>
   </section>
 
   <section>
     <h2>Experiencia</h2>
+
     <div class="timeline">
 
       <div class="timeline-item">
         <div class="timeline-icon"><i class="fas fa-server"></i></div>
-        <div class="exp">Contenido experiencia...</div>
+        <div class="exp">
+          <h3>Auxiliar de Sistemas — Petrocasinos S.A</h3>
+          <p><strong>Agosto 2024 - Actualidad</strong></p>
+          <ul>
+            <li>Administración de servidores físicos y virtuales (Windows Server).</li>
+            <li>Configuración y monitoreo de redes corporativas.</li>
+            <li>Mantenimiento de equipos, impresoras y periféricos.</li>
+            <li>Gestión de tickets de soporte y atención a usuarios.</li>
+            <li>Configuración de CCTV y seguridad informática.</li>
+          </ul>
+        </div>
       </div>
 
       <div class="timeline-item">
         <div class="timeline-icon"><i class="fas fa-hospital"></i></div>
-        <div class="exp">Contenido experiencia...</div>
+        <div class="exp">
+          <h3>Técnico de Sistemas — FAFOS</h3>
+          <p><strong>Marzo 2024 - Agosto 2024</strong></p>
+          <ul>
+            <li>Soporte técnico en sitio y remoto.</li>
+            <li>Gestión de usuarios y correos institucionales.</li>
+            <li>Mantenimiento de equipos e impresoras.</li>
+            <li>Monitoreo de CCTV.</li>
+            <li>Soporte al software clínico.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-icon"><i class="fas fa-network-wired"></i></div>
+        <div class="exp">
+          <h3>Técnico de Sistemas — TOOL S.S</h3>
+          <p><strong>Abril 2022 - Marzo 2024</strong></p>
+          <ul>
+            <li>Soporte remoto a nivel nacional.</li>
+            <li>Mantenimiento preventivo y correctivo.</li>
+            <li>Gestión de inventario tecnológico.</li>
+            <li>Administración de sistema de tickets.</li>
+            <li>Pruebas funcionales de aplicaciones web.</li>
+          </ul>
+        </div>
       </div>
 
     </div>
   </section>
 
+  <section id="proyectos">
+    <h2>Proyectos</h2>
+
+    <div class="projects">
+      <div class="card">
+        <h3>Portafolio Web</h3>
+        <p>Landing page personal desarrollada con HTML, CSS y JavaScript, incluyendo animaciones, efectos visuales y
+          diseño responsive.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+
+    <form action="https://formsubmit.co/zehrty.dev@gmail.com" method="POST">
+
+      <input type="text" name="name" placeholder="Nombre" required>
+      <input type="email" name="email" placeholder="Correo" required>
+      <textarea name="message" placeholder="Mensaje" required></textarea>
+
+      <input type="hidden" name="_captcha" value="false">
+
+      <button type="submit">Enviar</button>
+
+    </form>
+
+    <div id="form-message">Mensaje enviado correctamente ✅</div>
+
+  </section>
+
+  <footer>© 2026 Manuel Amado</footer>
+
   <script>
-    let ticking = false;
+    // ==== ANIMACIONES AL HACER SCROLL (SECCIONES Y LÍNEA DE TIEMPO) ====
+    const timeline = document.querySelector(".timeline");
+    const sections = document.querySelectorAll("section");
+    const timelineItems = document.querySelectorAll(".timeline-item");
 
     window.addEventListener("scroll", () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
-
-    function handleScroll() {
-      const sections = document.querySelectorAll("section");
-      const timeline = document.querySelector(".timeline");
-      const items = document.querySelectorAll(".timeline-item");
-
+      // 1. Mostrar las secciones gradualmente al hacer scroll
       sections.forEach(sec => {
-        if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
           sec.classList.add("show");
         }
       });
 
+      // 2. Progreso de la línea vertical en la sección de experiencia
       if (timeline) {
         const rect = timeline.getBoundingClientRect();
-        const progress = Math.min(Math.max((window.innerHeight - rect.top) / rect.height, 0), 1);
+        const windowHeight = window.innerHeight;
+        const progress = Math.min(Math.max((windowHeight - rect.top) / (rect.height + 200), 0), 1);
         timeline.style.setProperty("--line-height", `${progress * 100}%`);
       }
 
-      let closest = null;
-      let min = Infinity;
+      // 3. Destacar activamente el elemento de experiencia más centrado visiblemente
+      let closestItem = null;
+      let minDistance = Infinity;
+      const screenCenter = window.innerHeight / 2;
 
-      items.forEach(item => {
+      timelineItems.forEach(item => {
         const rect = item.getBoundingClientRect();
+        const itemCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(screenCenter - itemCenter);
 
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          const center = rect.top + rect.height / 2;
-          const distance = Math.abs(window.innerHeight / 2 - center);
-
-          if (distance < min) {
-            min = distance;
-            closest = item;
-          }
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestItem = item;
         }
       });
 
-      items.forEach(i => i.classList.remove("active"));
-      if (closest) closest.classList.add("active");
-    }
+      // Limpiamos los estados activos previos de todos los elementos
+      timelineItems.forEach(item => {
+        item.classList.remove("active");
+        const exp = item.querySelector(".exp");
+        if (exp) exp.classList.remove("active");
+      });
 
-    // CANVAS RESPONSIVE
+      // Aplicamos estado activo solamente a la experiencia más cercana
+      if (closestItem) {
+        closestItem.classList.add("active");
+        const exp = closestItem.querySelector(".exp");
+        if (exp) exp.classList.add("active");
+      }
+    });
+
+    // ==== EFECTO DE PARTÍCULAS INTERACTIVAS DE FONDO ====
     const canvas = document.getElementById("particles");
     const ctx = canvas.getContext("2d");
 
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    // Ajuste del renderizado al tamaño exacto de la ventana del navegador
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+    // Inicializamos 60 partículas con propiedades aleatorias para variedad
+    for (let i = 0; i < 60; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2,
+        dx: Math.random() * 0.5,
+        dy: Math.random() * 0.5
+      });
     }
-    resize();
-    window.addEventListener("resize", resize);
 
-    // PARTICULAS NATURALES
-    let particles = Array.from({ length: 60 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      dx: (Math.random() - 0.5) * 1,
-      dy: (Math.random() - 0.5) * 1,
-      r: Math.random() * 2
-    }));
-
+    // Bucle dinámico que anima y dibuja las partículas continuamente
     function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el cuadro anterior
+
       particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(168,85,247,0.5)"; // Color lila suave
+        ctx.fill();
+
+        // Sumar velocidad en posición visual para crear dinamismo
         p.x += p.dx;
         p.y += p.dy;
 
-        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(168,85,247,0.5)";
-        ctx.fill();
+        // Reposicionar partículas si salen de la visión en la pantalla
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y > canvas.height) p.y = 0;
       });
+
+      // Continuar el ciclo pidiendo el próximo cuadro al navegador de manera eficiente
       requestAnimationFrame(draw);
     }
-    draw();
+    draw(); // Inicia la animación visual
+
+    // ==== ENVÍO DEL FORMULARIO DE CONTACTO ASÍNCRONO ====
+    const form = document.querySelector("#contacto form");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); // Evitamos que la página se reinicie para dar una apariencia más fluida
+
+      const data = new FormData(form);
+
+      try {
+        await fetch(form.action, {
+          method: "POST",
+          body: data
+        });
+
+        // Desplegamos advertencia visual exitosa
+        const message = document.getElementById("form-message");
+        message.style.display = "block";
+
+        // Ocultamos la advertencia después de 4 segundos
+        setTimeout(() => {
+          message.style.display = "none";
+        }, 4000);
+
+        form.reset(); // Restablecer inputs en blanco del formulario
+      } catch (error) {
+        alert("Error al intentar enviar el mensaje ❌");
+      }
+    });
+
+    // DESACTIVAR RESTAURACIÓN DE SCROLL POR DEFECTO PARA QUE INICIE ARRIBA
+    history.scrollRestoration = "manual";
+
+    // TRANSPORTAR PANTALLA AL TOPE AL RECARGAR PÁGINA
+    window.onload = () => {
+      window.scrollTo(0, 0);
+    };
+
   </script>
 
 </body>
