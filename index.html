@@ -76,7 +76,8 @@
       background-color: var(--bg-color);
       color: var(--text-main);
       overflow-x: hidden;
-      transition: background-color 0.4s ease, color 0.4s ease;
+      /* Transición suave de 0.3s exacta para prevenir cambios bruscos de tema */
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     /* ==== NAVBAR (GLASSMORPHISM) ==== */
@@ -643,8 +644,8 @@
     /* ==== BOTÓN FLOTANTE TEMA (FAB) ==== */
     .theme-toggle-btn {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: 20px;
+      right: 20px;
       width: 55px;
       height: 55px;
       border-radius: 50%;
@@ -656,15 +657,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-md); /* Sombra suave natural de floating button */
       transition: all 0.3s ease;
-      z-index: 9999;
+      z-index: 1000;
     }
 
     .theme-toggle-btn:hover {
       transform: scale(1.1) rotate(15deg);
       color: var(--accent-main);
       border-color: var(--accent-main);
+      /* Glow ligero de atención única en hover, nunca animado constante */
       box-shadow: 0 10px 25px var(--accent-glow);
     }
 
