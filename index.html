@@ -213,15 +213,15 @@
     header {
       text-align: center;
       padding: 160px 20px 120px;
-      /* Degradado descendente que amarra perfecto al scroll */
-      background: linear-gradient(to bottom, var(--accent-glow-strong) 0%, transparent 80%);
+      /* Degradado profundo hacia la nada absoluta */
+      background: linear-gradient(to bottom, var(--accent-glow-strong) 0%, transparent 90%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       transition: background 0.3s ease;
-      margin-bottom: 80px; /* Separación clara hacia la vista About */
+      margin-bottom: 150px; /* Respiro masivo para separar de la sección About Me */
       will-change: transform, opacity; /* Optimización para las animaciones scroll */
     }
 
@@ -273,8 +273,8 @@
     /* ==== INTERSECTION OBSERVER ANIMATIONS ==== */
     .fade-up {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transform: translateY(50px); /* Desplazamiento ampliado para un reveal dramático */
+      transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     .fade-up.visible {
       opacity: 1;
@@ -1037,9 +1037,9 @@
       
       // Control de opacidad y posición de parallax mientras el header es visible
       if (scrollY <= window.innerHeight) {
-        // La opacidad decrece linealmente a la par del salto físico
-        heroSection.style.opacity = 1 - (scrollY / 700);
-        heroSection.style.transform = `translateY(${scrollY * 0.3}px)`;
+        // La opacidad decrece rápidamente y el hero escapa *hacia arriba* (-Y) del usuario
+        heroSection.style.opacity = 1 - (Math.min(scrollY, 600) / 600);
+        heroSection.style.transform = `translateY(-${scrollY * 0.45}px)`;
       } else {
         heroSection.style.opacity = 0;
       }
