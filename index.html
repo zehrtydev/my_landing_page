@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZehrtyDEV</title>
+  <title>ZehrtyDEV | Portafolio</title>
   <link rel="icon" type="image/png" href="favicon.png">
 
   <!-- IMPORTACIÓN DE ICONOS (FONTAWESOME) -->
@@ -13,7 +13,7 @@
   <style>
     /* ==== VARIABLES DE TEMA ==== */
     :root {
-      /* Tema Claro (Por defecto o si el sistema es light) */
+      /* Tema Claro (Light) */
       --bg-color: #f8fafc;
       --card-bg: #ffffff;
       --card-active: #f1f5f9;
@@ -22,7 +22,6 @@
       --border-color: #e2e8f0;
 
       --accent-main: #6366f1;
-      /* Morado/Índigo vibrante y amigable */
       --accent-hover: #4f46e5;
       --accent-glow: rgba(99, 102, 241, 0.2);
       --accent-glow-strong: rgba(99, 102, 241, 0.5);
@@ -34,12 +33,13 @@
       --particle-color: rgba(99, 102, 241, 0.3);
       --form-success-bg: #10b981;
       --form-success-text: #ffffff;
+
+      --nav-bg: rgba(248, 250, 252, 0.8);
     }
 
     [data-theme="dark"] {
-      /* Tema Oscuro (Moderno y profundo) */
+      /* Tema Oscuro (Dark) */
       --bg-color: #0f172a;
-      /* Slate oscuro elegante */
       --card-bg: #1e293b;
       --card-active: #334155;
       --text-main: #f8fafc;
@@ -47,7 +47,6 @@
       --border-color: #334155;
 
       --accent-main: #a855f7;
-      /* Violeta original vibrante para modo oscuro */
       --accent-hover: #9333ea;
       --accent-glow: rgba(168, 85, 247, 0.25);
       --accent-glow-strong: rgba(168, 85, 247, 0.6);
@@ -59,16 +58,82 @@
       --particle-color: rgba(168, 85, 247, 0.4);
       --form-success-bg: #ffffff;
       --form-success-text: #0f172a;
+
+      --nav-bg: rgba(15, 23, 42, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
     }
 
     /* ==== ESTILOS GENERALES ==== */
     body {
-      margin: 0;
       font-family: 'Segoe UI', Tahoma, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-main);
       overflow-x: hidden;
       transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    /* ==== NAVBAR (GLASSMORPHISM) ==== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--accent-main);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      background: none;
+      padding: 5px 10px;
+      box-shadow: none;
+      animation: none;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active-link {
+      color: var(--accent-main);
+      background: none;
+    }
+
+    /* Ocultar links en mobile por simplicidad, los portafolios de scroll lo permiten */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
     }
 
     /* ==== ESTILOS DEL FONDO (PARTÍCULAS) ==== */
@@ -82,18 +147,24 @@
     /* ==== SECCIÓN PRINCIPAL (HERO) ==== */
     header {
       text-align: center;
-      padding: 120px 20px 100px;
+      padding: 160px 20px 120px;
       background: radial-gradient(circle at top, var(--accent-glow), transparent);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .profile {
-      width: 130px;
-      height: 130px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      border: 3px solid var(--accent-main);
-      margin-bottom: 20px;
+      border: 4px solid var(--accent-main);
+      margin-bottom: 25px;
       box-shadow: 0 0 25px var(--accent-glow-strong);
       animation: glowPulse 3s infinite;
+      object-fit: cover;
     }
 
     @keyframes glowPulse {
@@ -104,87 +175,121 @@
       }
 
       50% {
-        box-shadow: 0 0 40px var(--accent-glow-strong);
+        box-shadow: 0 0 45px var(--accent-glow-strong);
       }
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
     .subtitle {
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       color: var(--text-muted);
+      max-width: 600px;
     }
 
-    .hero-buttons {
-      margin-top: 25px;
-    }
-
-    a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 22px;
-      background: var(--accent-main);
-      color: white;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
-      animation: glowBtn 2s infinite alternate;
-    }
-
-    @keyframes glowBtn {
-      from {
-        box-shadow: 0 0 10px var(--accent-glow);
-      }
-
-      to {
-        box-shadow: 0 0 25px var(--accent-glow-strong);
-      }
-    }
-
-    a:hover {
-      background: var(--accent-hover);
-    }
-
-    .secondary {
-      background: transparent;
-      border: 1px solid var(--accent-main);
-      color: var(--accent-main);
-      animation: none;
-      /* Sin glow automático para mejor contraste y limpieza */
-    }
-
-    .secondary:hover {
-      background: var(--accent-main);
-      color: white;
-    }
-
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 50px 20px;
-      border-bottom: 1px solid var(--border-color);
+    /* Entrada animada (Intersection observer) */
+    .fade-up {
       opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
 
-    section.show {
+    .fade-up.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    h2 {
-      margin-bottom: 20px;
+    .delay-1 {
+      transition-delay: 0.2s;
+    }
+
+    .delay-2 {
+      transition-delay: 0.4s;
+    }
+
+    .delay-3 {
+      transition-delay: 0.6s;
+    }
+
+    .hero-buttons {
+      margin-top: 30px;
+    }
+
+    .btn-main,
+    .btn-secondary {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .btn-main {
+      background: var(--accent-main);
+      color: white;
+      box-shadow: 0 5px 15px var(--accent-glow-strong);
+    }
+
+    .btn-main:hover {
+      background: var(--accent-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px var(--accent-glow-strong);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--accent-main);
       color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-main);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* ==== SECCIONES BASE ==== */
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 80px 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+      color: var(--text-main);
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      background: var(--accent-main);
+      bottom: -10px;
+      left: 0;
+      border-radius: 2px;
     }
 
     p {
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.7;
+      font-size: 1.05rem;
     }
 
     /* ==== SECCIÓN DE HABILIDADES (SKILLS) ==== */
@@ -196,72 +301,123 @@
 
     .skill {
       background: var(--card-bg);
-      padding: 10px 15px;
-      border-radius: 20px;
+      padding: 12px 20px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       border: 1px solid var(--border-color);
       box-shadow: var(--shadow-sm);
       transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.4s ease;
+      font-weight: 500;
+    }
+
+    .skill i {
+      font-size: 1.2rem;
+      color: var(--accent-main);
     }
 
     .skill:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px);
       border-color: var(--accent-main);
+      box-shadow: var(--shadow-md);
     }
 
-    /* ==== ESTILOS DE LA SECCIÓN DE EXPERIENCIA (Y TIMELINE) ==== */
+    /* ==== LÍNEA DE TIEMPO (TIMELINE) EXACTA ==== */
     .timeline {
       position: relative;
-      margin-top: 30px;
-      padding-left: 30px;
+      margin-top: 40px;
+      padding-left: 40px;
     }
 
-    .timeline::before {
-      content: "";
+    .timeline-bg-line {
       position: absolute;
-      left: 15px;
+      left: 19px;
       top: 0;
       width: 2px;
-      height: var(--line-height);
+      height: 100%;
+      background: var(--border-color);
+      z-index: 0;
+    }
+
+    .timeline-progress-line {
+      position: absolute;
+      left: 19px;
+      top: 0;
+      width: 2px;
+      height: 0px;
+      /* Manejado por JS exactamente */
       background: var(--accent-main);
       box-shadow: 0 0 10px var(--accent-main);
-      transition: height 0.4s ease-out;
+      z-index: 1;
+      will-change: height;
     }
 
     .timeline-item {
       position: relative;
-      margin-bottom: 40px;
-      transition: all 0.3s ease;
+      margin-bottom: 50px;
+      z-index: 2;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
     }
 
     .timeline-icon {
       position: absolute;
-      left: -5px;
-      top: 0;
-      background: var(--accent-main);
-      color: white;
-      width: 35px;
-      height: 35px;
+      left: -40px;
+      /* Relativo al padding del contenedor timeline */
+      top: 15px;
+      background: var(--bg-color);
+      border: 2px solid var(--border-color);
+      color: var(--text-muted);
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 15px var(--accent-glow-strong);
-      z-index: 2;
-      transition: background-color 0.4s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      z-index: 3;
+      transition: background-color 0.4s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      font-size: 1.1rem;
     }
 
     .exp {
       background: var(--card-bg);
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 15px;
+      padding: 25px;
+      border-radius: 12px;
       border: 1px solid var(--border-color);
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      /* Salto sutil tipo Apple */
       position: relative;
-      z-index: 1;
+    }
+
+    /* Conector visual premium (la flechita que apunta al ícono) */
+    .exp::before {
+      content: "";
+      position: absolute;
+      top: 25px;
+      left: -8px;
+      width: 15px;
+      height: 15px;
+      background: var(--card-bg);
+      border-left: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      transform: rotate(45deg);
+      transition: all 0.4s ease;
+    }
+
+    .exp h3 {
+      color: var(--text-main);
+      margin-bottom: 5px;
+      font-size: 1.2rem;
+    }
+
+    .exp p {
+      font-size: 0.9rem;
+      color: var(--accent-main);
+      font-weight: 600;
+      margin-bottom: 15px;
     }
 
     .exp ul {
@@ -271,105 +427,168 @@
     .exp li {
       margin-bottom: 8px;
       color: var(--text-muted);
+      font-size: 0.95rem;
     }
 
+    /* ESTADOS ACTIVOS TIMELINE */
     .timeline-item.active {
-      transform: scale(1.03);
+      z-index: 10;
     }
 
     .timeline-item.active .exp {
+      transform: translateX(10px) scale(1.02);
       background: var(--card-active);
       border-color: var(--accent-main);
       box-shadow: 0 15px 35px var(--accent-glow);
     }
 
+    .timeline-item.active .exp::before {
+      background: var(--card-active);
+      border-color: var(--accent-main);
+    }
+
     .timeline-item.active .timeline-icon {
+      background: var(--accent-main);
+      border-color: var(--accent-main);
+      color: white;
       transform: scale(1.2);
-      box-shadow: 0 0 30px var(--accent-main);
+      box-shadow: 0 0 25px var(--accent-glow-strong);
     }
 
     /* ==== ESTILOS DEL TEXTO EN LA SECCIÓN SOBRE MÍ ==== */
-    .about {
-      text-align: center;
-    }
-
-    .about p {
-      max-width: 700px;
-      margin: auto;
-      font-size: 1.05rem;
+    .about-text {
+      font-size: 1.1rem;
+      margin-top: 20px;
     }
 
     /* ==== SECCIÓN DE PROYECTOS ==== */
     .projects {
       display: grid;
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
     }
 
     .card {
       background: var(--card-bg);
-      padding: 20px;
       border-radius: 12px;
-      transition: 0.3s;
+      transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-banner {
+      width: 100%;
+      height: 150px;
+      background: var(--accent-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--accent-main);
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      background: var(--bg-color);
+      border-radius: 20px;
+      color: var(--text-muted);
       border: 1px solid var(--border-color);
     }
 
     .card:hover {
-      transform: translateY(-10px) scale(1.03);
+      transform: translateY(-10px);
       box-shadow: 0 20px 40px var(--accent-glow);
+      border-color: var(--accent-main);
     }
 
     /* ==== FORMULARIO DE CONTACTO ==== */
     form {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
+      max-width: 600px;
     }
 
     input,
     textarea {
-      padding: 10px;
-      border-radius: 8px;
+      padding: 15px;
+      border-radius: 10px;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       box-shadow: var(--shadow-inset);
       color: var(--text-main);
       font-family: inherit;
-      transition: background-color 0.4s ease, border-color 0.3s ease, color 0.4s ease;
+      font-size: 1rem;
+      transition: background-color 0.4s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
     }
 
     input:focus,
     textarea:focus {
       outline: none;
       border-color: var(--accent-main);
+      box-shadow: 0 0 0 3px var(--accent-glow);
     }
 
-    button {
-      padding: 12px;
+    button[type="submit"] {
+      padding: 15px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       background: var(--accent-main);
       color: white;
       font-weight: bold;
+      font-size: 1.1rem;
       cursor: pointer;
-      animation: glowBtn 2s infinite alternate;
-      transition: background-color 0.3s ease;
+      box-shadow: 0 5px 15px var(--accent-glow-strong);
+      transition: transform 0.2s ease, background-color 0.3s ease;
     }
 
-    button:hover {
+    button[type="submit"]:hover {
       background: var(--accent-hover);
+      transform: translateY(-2px);
     }
 
     footer {
       text-align: center;
-      padding: 30px;
-      color: var(--accent-main);
-      font-weight: 500;
+      padding: 40px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+      margin-top: 50px;
     }
 
     #form-message {
-      margin-top: 15px;
-      padding: 12px;
+      margin-top: 20px;
+      padding: 15px;
       border-radius: 8px;
       background: var(--form-success-bg);
       color: var(--form-success-text);
@@ -393,125 +612,139 @@
       }
     }
 
-    /* ==== BOTÓN FLOTANTE PARA CAMBIAR EL TEMA ==== */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
+    /* ==== BOTÓN FLOTANTE TEMA ==== */
+    .theme-toggle-btn {
+      background: none;
+      border: none;
       color: var(--text-main);
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
+      font-size: 1.3rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
-      z-index: 1000;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
-    .theme-toggle:hover {
-      transform: scale(1.1);
-      border-color: var(--accent-main);
+    .theme-toggle-btn:hover {
       color: var(--accent-main);
+      transform: scale(1.1) rotate(15deg);
+    }
+
+    /* Pequeño arreglo decorativo para el contenedor del inicio */
+    #inicio {
+      margin-top: 0;
+      padding-top: 0;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- BOTÓN DE TEMA INTERACTIVO -->
-  <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar modo de tema">
-    <i class="fas fa-moon"></i>
-  </button>
+  <!-- NAVBAR FIXED -->
+  <nav class="navbar">
+    <a href="#inicio" class="logo">ZehrtyDEV</a>
+    <ul class="nav-links">
+      <li><a href="#inicio" class="active-link">Inicio</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar modo de tema">
+      <i class="fas fa-moon"></i>
+    </button>
+  </nav>
 
   <canvas id="particles"></canvas>
 
-  <header>
-    <img src="https://via.placeholder.com/120" class="profile" alt="Perfil">
-    <h1>Manuel Amado (Zehrty)</h1>
-    <p class="subtitle">
+  <header id="inicio">
+    <img src="foto_hero.jpg" class="profile" alt="Foto de Manuel Amado">
+    <h1 class="fade-up delay-1">Manuel Amado (Zehrty)</h1>
+    <p class="subtitle fade-up delay-2">
       Especialista en Soporte TI | Futuro Desarrollador Web
     </p>
 
-    <div class="hero-buttons">
-      <a href="#proyectos">Ver proyectos</a>
-      <a href="#contacto" class="secondary">Contáctame</a>
+    <div class="hero-buttons fade-up delay-3">
+      <a href="#proyectos" class="btn-main">Ver Proyectos</a>
+      <a href="#contacto" class="btn-secondary">Contáctame</a>
     </div>
   </header>
 
-  <section class="about">
+  <section id="sobre-mi" class="fade-up">
     <h2>Sobre mí</h2>
-    <p>
-      Técnico en Sistemas con experiencia en soporte técnico, mantenimiento de equipos y gestión de infraestructura
-      tecnológica. A lo largo de mi trayectoria he trabajado en la administración de redes, servidores y sistemas de
-      videovigilancia, garantizando la operatividad y seguridad de los entornos informáticos. Me considero una persona
-      responsable, proactiva y orientada al servicio, con facilidad para adaptarme a nuevos entornos y aprender
-      rápidamente. Mi objetivo es seguir creciendo profesionalmente en el área tecnológica, aportando soluciones que
-      mejoren la eficiencia y la continuidad de los procesos dentro de la organización.
+    <p class="about-text">
+      Técnico en Sistemas con sólida experiencia en soporte técnico, mantenimiento de equipos y gestión de
+      infraestructura tecnológica. Me especializo en la administración de redes corporativas, configuración de
+      servidores (Windows Server) y el mantenimiento de sistemas de videovigilancia. Me apasiona resolver problemas y
+      asegurar la continuidad operativa en los entornos informáticos.
+      <br><br>
+      Soy una persona proactiva, orientada a resultados y con una alta adaptabilidad. Mi meta a largo plazo es forjar mi
+      carrera como Desarrollador Full-Stack, aportando eficiencia a la lógica de negocios a través del código.
     </p>
   </section>
 
-  <section>
-    <h2>Habilidades</h2>
+  <section id="habilidades" class="fade-up">
+    <h2>Habilidades Técnicas</h2>
     <div class="skills">
+      <div class="skill"><i class="fas fa-server"></i> Windows Server</div>
+      <div class="skill"><i class="fas fa-network-wired"></i> Redes & CCTV</div>
+      <div class="skill"><i class="fas fa-tools"></i> Soporte Hardware</div>
       <div class="skill"><i class="fab fa-html5"></i> HTML5</div>
       <div class="skill"><i class="fab fa-css3-alt"></i> CSS3</div>
-      <div class="skill"><i class="fab fa-git-alt"></i> Git</div>
-      <div class="skill"><i class="fab fa-github"></i> GitHub</div>
+      <div class="skill"><i class="fab fa-js"></i> JavaScript Fundamentos</div>
+      <div class="skill"><i class="fab fa-git-alt"></i> Git & GitHub</div>
     </div>
   </section>
 
-  <section>
+  <section id="experiencia">
     <h2>Experiencia</h2>
 
-    <div class="timeline">
+    <div class="timeline" id="timeline-container">
+      <div class="timeline-bg-line"></div>
+      <div class="timeline-progress-line" id="timeline-progress"></div>
 
-      <div class="timeline-item">
+      <div class="timeline-item fade-up">
         <div class="timeline-icon"><i class="fas fa-server"></i></div>
         <div class="exp">
           <h3>Auxiliar de Sistemas — Petrocasinos S.A</h3>
-          <p><strong>Agosto 2024 - Actualidad</strong></p>
+          <p>Agosto 2024 - Actualidad</p>
           <ul>
-            <li>Administración de servidores físicos y virtuales (Windows Server).</li>
-            <li>Configuración y monitoreo de redes corporativas.</li>
-            <li>Mantenimiento de equipos, impresoras y periféricos.</li>
-            <li>Gestión de tickets de soporte y atención a usuarios.</li>
-            <li>Configuración de CCTV y seguridad informática.</li>
+            <li>Administración de servidores físicos y virtuales con Windows Server.</li>
+            <li>Configuración y monitoreo de las redes corporativas para la continuidad.</li>
+            <li>Mantenimiento de computadores, impresoras y periféricos a gran escala.</li>
+            <li>Gestión de tickets de soporte y atención directa al usuario final.</li>
+            <li>Configuración integral de CCTV y fortalecimiento de seguridad TI.</li>
           </ul>
         </div>
       </div>
 
-      <div class="timeline-item">
+      <div class="timeline-item fade-up">
         <div class="timeline-icon"><i class="fas fa-hospital"></i></div>
         <div class="exp">
           <h3>Técnico de Sistemas — FAFOS</h3>
-          <p><strong>Marzo 2024 - Agosto 2024</strong></p>
+          <p>Marzo 2024 - Agosto 2024</p>
           <ul>
-            <li>Soporte técnico en sitio y remoto.</li>
-            <li>Gestión de usuarios y correos institucionales.</li>
-            <li>Mantenimiento de equipos e impresoras.</li>
-            <li>Monitoreo de CCTV.</li>
-            <li>Soporte al software clínico.</li>
+            <li>Provisión de soporte técnico en sitio y conexiones remotas.</li>
+            <li>Administración activa de usuarios y buzones de correos institucionales.</li>
+            <li>Mantenimiento preventivo rotativo de equipos e impresoras láser.</li>
+            <li>Monitoreo y respaldo del circuito cerrado de CCTV.</li>
+            <li>Soporte y estabilización al software clínico principal.</li>
           </ul>
         </div>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-icon"><i class="fas fa-network-wired"></i></div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-icon"><i class="fas fa-headset"></i></div>
         <div class="exp">
           <h3>Técnico de Sistemas — TOOL S.S</h3>
-          <p><strong>Abril 2022 - Marzo 2024</strong></p>
+          <p>Abril 2022 - Marzo 2024</p>
           <ul>
-            <li>Soporte remoto a nivel nacional.</li>
-            <li>Mantenimiento preventivo y correctivo.</li>
-            <li>Gestión de inventario tecnológico.</li>
-            <li>Administración de sistema de tickets.</li>
-            <li>Pruebas funcionales de aplicaciones web.</li>
+            <li>Asistencia de nivel nacional a través de soporte y diagnóstico remoto.</li>
+            <li>Manejo intensivo de mantenimiento preventivo y correctivo.</li>
+            <li>Control del inventario tecnológico de la plataforma.</li>
+            <li>Administración y resolución eficaz del sistema de tickets.</li>
+            <li>Auditorías y pruebas funcionales en interfaces web.</li>
           </ul>
         </div>
       </div>
@@ -520,67 +753,108 @@
   </section>
 
   <section id="proyectos">
-    <h2>Proyectos</h2>
+    <h2>Proyectos Destacados</h2>
 
     <div class="projects">
-      <div class="card">
-        <h3>Portafolio Web</h3>
-        <p>Landing page personal desarrollada con HTML, CSS y JavaScript, incluyendo animaciones, efectos visuales y
-          diseño responsive.</p>
+      <!-- Proyecto 1 -->
+      <div class="card fade-up">
+        <div class="card-banner"><i class="fas fa-laptop-code"></i></div>
+        <div class="card-content">
+          <h3>Portafolio Personal Web</h3>
+          <p>Landing page personal interactiva. Integradora de una experiencia responsive premium, animaciones a través
+            de Intersection Observer, y control dinámico de temas claro y oscuro basados en Local Storage y estado del
+            sistema.</p>
+          <div class="card-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3 Vainilla</span>
+            <span class="tag">JS ES6</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 2 Mock -->
+      <div class="card fade-up delay-1">
+        <div class="card-banner"><i class="fas fa-chart-line"></i></div>
+        <div class="card-content">
+          <h3>Dashboard TI (Pronto)</h3>
+          <p>Panel de administración visual para la lectura y gestión de tickets de soporte. Permite ver métricas de
+            rendimiento por técnico y organizar el hardware institucional visualmente. Proyecto futuro.</p>
+          <div class="card-tags">
+            <span class="tag">Front-End</span>
+            <span class="tag">UX Design</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 3 Mock -->
+      <div class="card fade-up delay-2">
+        <div class="card-banner"><i class="fas fa-network-wired"></i></div>
+        <div class="card-content">
+          <h3>Esquema Red CCTV</h3>
+          <p>Documentación técnica interactiva mapeando la arquitectura de servidores e interconexiones de las
+            sucursales. Optimizado para visualización e inducción técnica en Petrocasinos.</p>
+          <div class="card-tags">
+            <span class="tag">Administración</span>
+            <span class="tag">Documentación</span>
+          </div>
+        </div>
       </div>
     </div>
 
   </section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
+  <section id="contacto" class="fade-up">
+    <h2>Hablemos de tu entorno TI</h2>
+    <p style="margin-bottom: 25px;">Si tienes dudas sobre infraestructura, necesitas soporte o estás interesado en
+      formar una alianza laboral, ¡déjame tu mensaje abajo!</p>
 
     <form action="https://formsubmit.co/zehrty.dev@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Tu Nombre Completo" required>
+      <input type="email" name="email" placeholder="Correo Electrónico de contacto" required>
+      <textarea name="message" placeholder="¿Cómo te puedo ayudar?" required></textarea>
 
-      <input type="text" name="name" placeholder="Nombre" required>
-      <input type="email" name="email" placeholder="Correo" required>
-      <textarea name="message" placeholder="Mensaje" required></textarea>
-
+      <!-- Evita captcha de formsubmit -->
       <input type="hidden" name="_captcha" value="false">
+      <!-- Respuesta auto. Si necesitas redirección usa el sig value -->
+      <input type="hidden" name="_next" value="">
 
-      <button type="submit">Enviar</button>
-
+      <button type="submit"><i class="far fa-paper-plane"></i> Enviar Mensaje</button>
     </form>
 
-    <div id="form-message">Mensaje enviado correctamente ✅</div>
-
+    <div id="form-message">¡El mensaje ha sido enviado satisfactoriamente! ✅ Me pondré en contacto contigo pronto.</div>
   </section>
 
-  <footer>© 2026 Manuel Amado</footer>
+  <footer>
+    <div style="font-size: 1.5rem; margin-bottom: 10px;">
+      <a href="#" style="color: inherit; text-decoration: none; margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+      <a href="#" style="color: inherit; text-decoration: none; margin: 0 10px;"><i class="fab fa-github"></i></a>
+    </div>
+    © 2026 Manuel Amado (Zehrty). Administrando sistemas, construyendo la web.
+  </footer>
 
   <script>
-    // ==== GESTIÓN DEL TEMA (MODOS CLARO Y OSCURO) ====
+    // ==== GESTIÓN DEL TEMA EXACTA (MODOS CLARO Y OSCURO) ====
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = themeToggle.querySelector('i');
     const root = document.documentElement;
-    let particleColor = "rgba(99, 102, 241, 0.3)"; // Color inicial (ligará al CSS)
+    let particleColor = "rgba(99, 102, 241, 0.3)";
 
     function setTheme(theme) {
       root.setAttribute('data-theme', theme);
       localStorage.setItem('theme', theme);
 
       if (theme === 'dark') {
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
+        themeIcon.className = 'fas fa-sun';
       } else {
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
+        themeIcon.className = 'fas fa-moon';
       }
 
-      // Permitimos que el navegador actualice los estilos CSS y repintamos color de partícula
       setTimeout(() => {
         particleColor = getComputedStyle(root).getPropertyValue('--particle-color').trim() || particleColor;
       }, 50);
     }
 
-    // 1. Verificar si hay preferencia guardada por el usuario
     const savedTheme = localStorage.getItem('theme');
-    // 2. Verificar la preferencia por defecto de su sistema operativo
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     if (savedTheme) {
@@ -588,85 +862,105 @@
     } else if (systemPrefersDark) {
       setTheme('dark');
     } else {
-      setTheme('light'); // El light mode más amigable y limpio
+      setTheme('light');
     }
 
-    // Acción del botón
     themeToggle.addEventListener('click', () => {
-      const currentTheme = root.getAttribute('data-theme');
-      setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
 
-    // Cambios dinámicos en el sistema operativo
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        setTheme(e.matches ? 'dark' : 'light');
-      }
-    });
+    // ==== INTERSECTION OBSERVER ANIMACIONES (PRECISO Y FLUIDO) ====
+    // Esto reemplaza la antigua lógica insegura atada estáticamente al scroll
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const sections = document.querySelectorAll('section, header');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
-    // ==== ANIMACIONES AL HACER SCROLL (SECCIONES Y LÍNEA DE TIEMPO) ====
-    const timeline = document.querySelector(".timeline");
-    const sections = document.querySelectorAll("section");
+    // Observer para animaciones de entrada
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Descomentar la sig if quieres que anime una sola vez
+          // observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -100px 0px', threshold: 0.1 });
+
+    fadeElements.forEach(el => revealObserver.observe(el));
+
+    // Observer específico para el Active State de la Navbar
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active-link');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active-link');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+    sections.forEach(sec => navObserver.observe(sec));
+
+
+    // ==== TIMELINE ENGINE (A NIVEL DE PIXEL PERFECT) ====
+    const timelineContainer = document.getElementById("timeline-container");
+    const timelineProgress = document.getElementById("timeline-progress");
     const timelineItems = document.querySelectorAll(".timeline-item");
 
     window.addEventListener("scroll", () => {
-      // 1. Mostrar las secciones gradualmente al hacer scroll
-      sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-          sec.classList.add("show");
+      if (timelineContainer && timelineItems.length > 0) {
+
+        // CÁLCULO DE LA LÍNEA VERTICAL CON PRECISIÓN MATEMÁTICA AL 100%
+        const rect = timelineContainer.getBoundingClientRect();
+        const centerScreen = window.innerHeight / 2;
+
+        // Empieza a trazar la línea justo cuando el top del contenedor roza el centro de la pantalla
+        let progressHeight = centerScreen - rect.top;
+
+        // Min - Max clampero 
+        progressHeight = Math.max(0, Math.min(progressHeight, rect.height));
+
+        // Reflejamos esa matemática fluida
+        timelineProgress.style.height = `${progressHeight}px`;
+
+        // ELIMINAR ESTADOS PREVIAMENTE ACTIVOS
+        timelineItems.forEach(item => item.classList.remove("active"));
+
+        // BÚSQUEDA DEL ÍTEM ACTIVO EXACTO (El que cruza la línea del progreso / centro)
+        // En lugar de buscar "el más cercano algorítmicamente", busquemos aquel cuyo margen
+        // vertical sea superado por el scroll. Así la luz del ícono coincide 1:1 con la línea 
+
+        for (let i = timelineItems.length - 1; i >= 0; i--) {
+          const itemRect = timelineItems[i].getBoundingClientRect();
+          const triggerZone = itemRect.top + (itemRect.height * 0.2); // El 20% del item
+
+          if (centerScreen >= triggerZone) {
+            timelineItems[i].classList.add("active");
+            break; // Rompemos para activar solo el inmediatamente superior
+          }
         }
-      });
-
-      // 2. Progreso de la línea vertical en la sección de experiencia
-      if (timeline) {
-        const rect = timeline.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const progress = Math.min(Math.max((windowHeight - rect.top) / (rect.height + 200), 0), 1);
-        timeline.style.setProperty("--line-height", `${progress * 100}%`);
-      }
-
-      // 3. Destacar activamente el elemento de experiencia más centrado visiblemente
-      let closestItem = null;
-      let minDistance = Infinity;
-      const screenCenter = window.innerHeight / 2;
-
-      timelineItems.forEach(item => {
-        const rect = item.getBoundingClientRect();
-        const itemCenter = rect.top + rect.height / 2;
-        const distance = Math.abs(screenCenter - itemCenter);
-
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestItem = item;
-        }
-      });
-
-      // Limpiamos los estados activos previos de todos los elementos
-      timelineItems.forEach(item => {
-        item.classList.remove("active");
-        const exp = item.querySelector(".exp");
-        if (exp) exp.classList.remove("active");
-      });
-
-      // Aplicamos estado activo solamente a la experiencia más cercana
-      if (closestItem) {
-        closestItem.classList.add("active");
-        const exp = closestItem.querySelector(".exp");
-        if (exp) exp.classList.add("active");
       }
     });
+
+    // Forzar el recálculo inicial para cuando recargamos a media página
+    window.dispatchEvent(new Event('scroll'));
 
     // ==== EFECTO DE PARTÍCULAS INTERACTIVAS DE FONDO ====
     const canvas = document.getElementById("particles");
     const ctx = canvas.getContext("2d");
 
-    // Ajuste del renderizado al tamaño exacto de la ventana del navegador
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
 
     let particles = [];
-    // Inicializamos 60 partículas con propiedades aleatorias para variedad
     for (let i = 0; i < 60; i++) {
       particles.push({
         x: Math.random() * canvas.width,
@@ -677,68 +971,43 @@
       });
     }
 
-    // Bucle dinámico que anima y dibuja las partículas continuamente
     function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el cuadro anterior
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach(p => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-
-        // El color aquí toma la variable dinámica de Theme Light/Dark 
         ctx.fillStyle = particleColor;
         ctx.fill();
 
-        // Sumar velocidad en posición visual para crear dinamismo
         p.x += p.dx;
         p.y += p.dy;
 
-        // Reposicionar partículas si salen de la visión en la pantalla
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y > canvas.height) p.y = 0;
+        if (p.x > canvas.width || p.x < 0) p.dx *= -1;
+        if (p.y > canvas.height || p.y < 0) p.dy *= -1;
       });
-
-      // Continuar el ciclo pidiendo el próximo cuadro al navegador de manera eficiente
       requestAnimationFrame(draw);
     }
-    draw(); // Inicia la animación visual
+    draw();
 
-    // ==== ENVÍO DEL FORMULARIO DE CONTACTO ASÍNCRONO ====
+    // ==== ENVÍO DEL FORMULARIO SIN RECARGA ====
     const form = document.querySelector("#contacto form");
 
     form.addEventListener("submit", async (e) => {
-      e.preventDefault(); // Evitamos que la página se reinicie para dar una apariencia más fluida
-
+      e.preventDefault();
       const data = new FormData(form);
-
       try {
-        await fetch(form.action, {
-          method: "POST",
-          body: data
-        });
-
-        // Desplegamos advertencia visual exitosa
+        await fetch(form.action, { method: "POST", body: data });
         const message = document.getElementById("form-message");
         message.style.display = "block";
-
-        // Ocultamos la advertencia después de 4 segundos
-        setTimeout(() => {
-          message.style.display = "none";
-        }, 4000);
-
-        form.reset(); // Restablecer inputs en blanco del formulario
+        setTimeout(() => message.style.display = "none", 4000);
+        form.reset();
       } catch (error) {
         alert("Error al intentar enviar el mensaje ❌");
       }
     });
 
-    // DESACTIVAR RESTAURACIÓN DE SCROLL POR DEFECTO PARA QUE INICIE ARRIBA
     history.scrollRestoration = "manual";
-
-    // Transportar pantalla al tope al recargar página
-    window.onload = () => {
-      window.scrollTo(0, 0);
-    };
 
   </script>
 
