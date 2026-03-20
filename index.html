@@ -263,15 +263,23 @@
       max-width: 600px;
     }
 
-    /* Animación de entrada de página inicial (Keyframes Nativos) */
-    .hero-animate {
+    /* Animaciones exclusivas y diferenciadas para impacto inicial (Hero) */
+    .hero-img-animate {
       opacity: 0;
-      transform: translateY(30px) scale(0.98);
-      animation: heroSwoosh 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      transform: scale(0.85);
+      animation: heroPop 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
-    
-    @keyframes heroSwoosh {
-      to { opacity: 1; transform: translateY(0) scale(1); }
+    @keyframes heroPop {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .hero-text-animate {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: heroSlideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+    @keyframes heroSlideUp {
+      to { opacity: 1; transform: translateY(0); }
     }
     
     .hero-delay-1 { animation-delay: 0.15s; }
@@ -315,8 +323,8 @@
 
     .btn-main:hover {
       background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-glow); /* Glow suavecito interaccional */
+      transform: scale(1.03) translateY(-2px); /* Táctil dinámico */
+      box-shadow: var(--shadow-glow); /* Glow exclusivo en acción */
       color: #ffffff;
     }
 
@@ -330,7 +338,7 @@
     .btn-secondary:hover {
       background: var(--card-active);
       border-color: var(--text-muted);
-      transform: translateY(-2px);
+      transform: scale(1.03) translateY(-2px);
     }
 
     /* ==== SECCIONES BASE ==== */
@@ -403,9 +411,9 @@
     }
 
     .skill:hover {
-      transform: translateY(-3px);
+      transform: scale(1.05) translateY(-2px); /* Microinteracción scale para dar vida */
       border-color: var(--accent-main);
-      box-shadow: var(--shadow-glow);
+      box-shadow: var(--shadow-glow); /* Retroalimentación instantánea */
     }
 
     /* ==== LÍNEA DE TIEMPO (TIMELINE LOGIC) ==== */
@@ -594,9 +602,9 @@
     }
 
     .card:hover {
-      transform: translateY(-6px);
+      transform: scale(1.02) translateY(-6px); /* Sensación inmersiva de tarjeta física 3D levantada */
       box-shadow: var(--shadow-glow);
-      border-color: var(--border-color);
+      border-color: var(--accent-main); /* Activa el contexto pro al presionar */
     }
 
     /* ==== FORMULARIO DE CONTACTO ==== */
@@ -647,8 +655,8 @@
 
     button[type="submit"]:hover {
       background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-glow); /* Brillo interactivo de hover */
+      transform: scale(1.03) translateY(-2px); /* Uniformidad modal global con todos los botones */
+      box-shadow: var(--shadow-glow); 
     }
 
     footer {
@@ -699,13 +707,13 @@
   <canvas id="particles"></canvas>
 
   <header id="inicio">
-    <img src="foto_hero.jpg" class="profile hero-animate" alt="Foto de Manuel Amado">
-    <h1 class="hero-animate hero-delay-1">Manuel Amado (Zehrty)</h1>
-    <p class="subtitle hero-animate hero-delay-2">
+    <img src="foto_hero.jpg" class="profile hero-img-animate" alt="Foto de Manuel Amado">
+    <h1 class="hero-text-animate hero-delay-1">Manuel Amado (Zehrty)</h1>
+    <p class="subtitle hero-text-animate hero-delay-2">
       Especialista en Soporte TI | Futuro Desarrollador Web
     </p>
 
-    <div class="hero-buttons hero-animate hero-delay-3">
+    <div class="hero-buttons hero-text-animate hero-delay-3">
       <a href="#proyectos" class="btn-main">Ver Proyectos</a>
       <a href="#contacto" class="btn-secondary">Contáctame</a>
     </div>
